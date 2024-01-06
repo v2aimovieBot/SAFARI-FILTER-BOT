@@ -149,8 +149,7 @@ Nᴀᴍᴇ - {}"""
 • ᴘᴇʀᴍᴀɴᴇɴᴛ ᴅᴍ ʟɪɴᴋ : <a href='t.me/jk_dev'>ᴄʟɪᴄᴋ ʜᴇʀᴇ</a></b>"""
 
     NORSLTS = """
-★ #𝗡𝗼𝗥𝗲𝘀𝘂𝗹𝘁𝘀 ★
-
+#NoResult
 ★ Group Name <b>: {}</b>
 ★ Group Id <code>{}</code>
 ★User <b>: {}</b>
