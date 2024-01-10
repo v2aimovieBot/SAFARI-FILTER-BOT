@@ -142,7 +142,7 @@ Nᴀᴍᴇ - {}"""
 ★ Message <code>{}</code>"""
 
     CAPTION = """
-<b>📂 Fɪʟᴇ ɴᴀᴍᴇ : </b><a href="https://t.me/lusifilms">{file_name}</a><b>
+<b>📂 Fɪʟᴇ ɴᴀᴍᴇ : </b><a href="https://t.me/DigitalSearchMovie">{file_name}</a><b>
 </b>"""
 
     IMDB_TEMPLATE_TXT = """
