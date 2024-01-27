@@ -8,7 +8,7 @@ import asyncio
         
 @Client.on_message(filters.command("broadcast") & filters.user(ADMINS) & filters.reply)
 # https://t.me/GetTGLink/4178
-async def verupikkals(bot, message):
+async def verupikkalss(bot, message):
     users = await db.get_all_users()
     b_msg = message.reply_to_message
     sts = await message.reply_text(
@@ -41,7 +41,7 @@ async def verupikkals(bot, message):
     await sts.edit(f"Broadcast Completed:\nCompleted in {time_taken} seconds.\n\nTotal Users {total_users}\nCompleted: {done} / {total_users}\nSuccess: {success}\nBlocked: {blocked}\nDeleted: {deleted}")
 
 @Client.on_message(filters.command("grp_broadcast") & filters.user(ADMINS) & filters.reply)
-async def grp_brodcst(bot, message):
+async def grp_brodcstt(bot, message):
     chats = await db.get_all_chats()
     b_msg = message.reply_to_message
     sts = await message.reply_text(
