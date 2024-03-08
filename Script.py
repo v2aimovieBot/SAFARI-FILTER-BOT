@@ -15,7 +15,6 @@ Hᴇʀᴇ Is Tʜᴇ Hᴇʟᴘ Fᴏʀ Mʏ Cᴏᴍᴍᴀɴᴅs.</b>"""
     
     REQ_TEXT  = """
 #NewRequest
-Bot - {}
 Name - {} (<code>{}</code>)
 Request - <b>{}</b>"""
 
