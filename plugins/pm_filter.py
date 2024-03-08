@@ -97,10 +97,10 @@ async def give_filter(client, message):
                 parse_mode=enums.ParseMode.HTML
             )
 
-@Client.on_message(filters.command('request') & filters.group)
+@Client.on_message(filters.command('request'))
 async def request(client, message):
     # Strip the command and normalize the movie name
-    movie_name = message.text.replace("/request", "").replace("/Request", "").strip()
+    movie_name = message.text.replace("/request", "").replace("/Request", "")
     # files, _, _ = await get_search_results(movie_name.lower(), offset=0, filter=True)
 
     if not movie_name:
