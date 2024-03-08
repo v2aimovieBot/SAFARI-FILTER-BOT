@@ -12,6 +12,17 @@ Hᴇʀᴇ Is Tʜᴇ Hᴇʟᴘ Fᴏʀ Mʏ Cᴏᴍᴍᴀɴᴅs.</b>"""
 ✯ DᴀᴛᴀBᴀsᴇ: <a href='https://www.mongodb.com/'>MᴏɴɢᴏDB</a>
 ✯ Bᴏᴛ Sᴇʀᴠᴇʀ: <a href='https://app.koyeb.com/'>Anything</a>
 ✯ Bᴜɪʟᴅ Sᴛᴀᴛᴜs: v2.7.1 [ Sᴛᴀʙʟᴇ ]</b>"""
+    
+    REQ_TEXT  = """
+#NewRequest
+Bot - {}
+Name - {} (<code>{}</code>)
+Request - <b>{}</b>"""
+
+
+    REQM = """**🎥 To request for a movie please pass movie details along with** /request **command.**\n**Example**: <code>/request Avengers 2019</code>"""
+
+    REQ_REPLY = """📍 **Your Request for** {} **has been submitted to the admins.**\n\n🚀 **Your Request Will Be Uploaded soon.**\n\n📌 **Please Note that Admins might be busy. So, this may take more time.**"""
 
     SOURCE_TXT = """<b>ɴᴏᴛᴇ: ᴛʜɪꜱ ʙᴏᴛ ɪꜱ ᴀɴ ᴏᴘᴇɴ ꜱᴏᴜʀᴄᴇ ᴘʀᴏᴊᴇᴄᴛ.
 Sᴏᴜʀᴄᴇ Cᴏᴅᴇ: <a href=https://github.com/Jkdeveloper01/JK-FILTER-BOT>𝑱𝑲-𝑭𝑰𝑳𝑻𝑬𝑹-𝑩𝑶𝑻</a>
