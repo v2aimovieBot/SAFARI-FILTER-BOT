@@ -96,17 +96,28 @@ async def give_filter(client, message):
                 text=f"<b>Hᴇʏ {message.from_user.mention}, {str(total_results)} ʀᴇsᴜʟᴛs ᴀʀᴇ ғᴏᴜɴᴅ ɪɴ ᴍʏ ᴅᴀᴛᴀʙᴀsᴇ ғᴏʀ ʏᴏᴜʀ ᴏ̨ᴜᴇʀʏ {search}. Kɪɴᴅʟʏ ᴜsᴇ ɪɴʟɪɴᴇ sᴇᴀʀᴄʜ ᴏʀ ᴍᴀᴋᴇ ᴀ ɢʀᴏᴜᴘ ᴀɴᴅ ᴀᴅᴅ ᴍᴇ ᴀs ᴀᴅᴍɪɴ ᴛᴏ ɢᴇᴛ ᴍᴏᴠɪᴇ ғɪʟᴇs. Tʜɪs ɪs ᴀ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ sᴏ ᴛʜᴀᴛ ʏᴏᴜ ᴄᴀɴ'ᴛ ɢᴇᴛ ғɪʟᴇs ғʀᴏᴍ ʜᴇʀᴇ..</b>",
                 parse_mode=enums.ParseMode.HTML
             )
+@Client.on_callback_query(filters.regex(r"^notify_user_not_avail"))
+async def request_qury(client, query):
+    user_id, movie = data.split(":")
+    await client.send_message(int(user_id), f"😒 oops! sona, Your requested content named `{movie}` is not available right now, we are really trying our best to serve you this content, can you please provide us some more details related to your query `{movie}`, \nSend details to Admin : <a href='https://telegram.me/{ADMIN_USRNM}'>**Send here...**</a>\n\n❤ Thank You for the contribution", reply_markup=reply_markup)
+            await query.edit_message_text(text=f"- __**User notified successfully sweetie...✅**__\n\n⏳**Status** : Not Available 😒.\n🪪**UserID** : `{user_id}`\n🎞**Content** : `{movie}`\n\n\n🦋")
+
 
 @Client.on_message(filters.command('request') & filters.incoming)
 async def request(client, message):
     movie_name = message.text.replace("/request", "").replace("/Request", "").strip()
-
+    search = message.text
+    requested_movie = search.strip()
+    user_id = message.from_user.id
     if not movie_name:
         await message.reply_text(script.REQM)
         return
     await message.reply_text(script.REQ_REPLY.format(movie_name))
     log_message = script.REQ_TEXT.format(message.from_user.mention, message.from_user.id, movie_name)
-    await client.send_message(LOG_CHANNEL, log_message)
+    await client.send_message(LOG_CHANNEL, log_message,
+    reply_markup=InlineKeyboardMarkup([[
+            InlineKeyboardButton('Send Message', callback_data=f"notify_user_not_avail:{user_id}:{requested_movie}")]])
+            )
         
 @Client.on_message(filters.private & filters.text & filters.incoming)
 async def pm_text(bot, message):
