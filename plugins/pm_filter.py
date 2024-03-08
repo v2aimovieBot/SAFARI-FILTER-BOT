@@ -106,7 +106,7 @@ async def request(client, message):
             await message.reply_text(script.REQM)
             return
         await message.reply_text(script.REQ_REPLY.format(movie_name))
-        log_message = script.REQ_TEXT.format(temp.B_NAME, message.from_user.mention, message.from_user.id, movie_name)
+        log_message = script.REQ_TEXT.format(message.from_user.mention, message.from_user.id, movie_name)
         await client.send_message(LOG_CHANNEL, log_message)
     if len(message.command) != 2:
         movie_name = message.text.replace("/request", "").replace("/Request", "").strip()
@@ -114,7 +114,7 @@ async def request(client, message):
             await message.reply_text(script.REQM)
             return
         await message.reply_text(script.REQ_REPLY.format(movie_name))
-        log_message = script.REQ_TEXT.format(temp.B_NAME, message.from_user.mention, message.from_user.id, movie_name)
+        log_message = script.REQ_TEXT.format(message.from_user.mention, message.from_user.id, movie_name)
         await client.send_message(LOG_CHANNEL, log_message)
         
 @Client.on_message(filters.private & filters.text & filters.incoming)
