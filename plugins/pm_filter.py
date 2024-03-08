@@ -98,24 +98,13 @@ async def give_filter(client, message):
             )
 
 @Client.on_message(filters.command('request'))
-async def request(client, message):
-    # Strip the command and normalize the movie name
-    movie_name = message.text.replace("/request", "").replace("/Request", "").strip()
-    # files, _, _ = await get_search_results(movie_name.lower(), offset=0, filter=True)
-
-    if not movie_name:
-        await message.reply_text(script.REQM)
-        return
-    
-    # if files:
-        # await message.reply_text(f"**This Movie Is Already Available In Our Database. Please Send Movie Name Directly.**", reply_to_message_id=message.id, disable_web_page_preview=True)
-
-    # else:
-    await message.reply_text(script.REQ_REPLY.format(movie_name))
-    log_message = script.REQ_TEXT.format(temp.B_NAME, message.from_user.mention, message.from_user.id, movie_name)
+async def showid(client, message):
+    if len(message.command) == 1:
+        return await message.reply('Give me a chat id')
+    movie = message.text.split('-')
+    log_message = script.REQ_TEXT.format(temp.B_NAME, message.from_user.mention, message.from_user.id, movie)
     await client.send_message(LOG_CHANNEL, log_message)
-
-
+    
 @Client.on_message(filters.private & filters.text & filters.incoming)
 async def pm_text(bot, message):
     content = message.text
