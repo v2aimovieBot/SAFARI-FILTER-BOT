@@ -99,23 +99,14 @@ async def give_filter(client, message):
 
 @Client.on_message(filters.command('request') & filters.incoming)
 async def request(client, message):
-    if message.chat.type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        movie_name = message.text.replace("/request", "").replace("/Request", "").strip()
-    
-        if not movie_name:
-            await message.reply_text(script.REQM)
-            return
-        await message.reply_text(script.REQ_REPLY.format(movie_name))
-        log_message = script.REQ_TEXT.format(message.from_user.mention, message.from_user.id, movie_name)
-        await client.send_message(LOG_CHANNEL, log_message)
-    if len(message.command) != 2:
-        movie_name = message.text.replace("/request", "").replace("/Request", "").strip()
-        if not movie_name:
-            await message.reply_text(script.REQM)
-            return
-        await message.reply_text(script.REQ_REPLY.format(movie_name))
-        log_message = script.REQ_TEXT.format(message.from_user.mention, message.from_user.id, movie_name)
-        await client.send_message(LOG_CHANNEL, log_message)
+    movie_name = message.text.replace("/request", "").replace("/Request", "").strip()
+
+    if not movie_name:
+        await message.reply_text(script.REQM)
+        return
+    await message.reply_text(script.REQ_REPLY.format(movie_name))
+    log_message = script.REQ_TEXT.format(message.from_user.mention, message.from_user.id, movie_name)
+    await client.send_message(LOG_CHANNEL, log_message)
         
 @Client.on_message(filters.private & filters.text & filters.incoming)
 async def pm_text(bot, message):
