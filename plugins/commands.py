@@ -22,7 +22,7 @@ BATCH_FILES = {}
 async def request(client, message):
     movie_name = message.text.replace("/request", "").replace("/Request", "").strip()
     search = message.text
-    requested_movie = search.text.replace("/request", "").replace("/Request", "").strip()
+    requested_movie = search.replace("/request", "").replace("/Request", "").strip()
     user_id = message.from_user.id
     if not movie_name:
         await message.reply_text(script.REQM)
