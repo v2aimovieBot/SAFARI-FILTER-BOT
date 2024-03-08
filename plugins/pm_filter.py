@@ -97,7 +97,7 @@ async def give_filter(client, message):
                 parse_mode=enums.ParseMode.HTML
             )
 
-@Client.on_message(filters.command("request") & filters.group & filters.incoming)
+@Client.on_message(filters.command("request"))
 async def request(client, message):
     # Strip the command and normalize the movie name
     movie_name = message.text.replace("/request", "").replace("/Request", "").strip()
