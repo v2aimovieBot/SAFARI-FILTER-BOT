@@ -1302,7 +1302,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
-    elif data.startswith("notify_user_not_avail"):
+    elif query.data.startswith("notify_user_not_avail"):
         _, user_id, movie = data.split(":")
         # Send message to user
         try:
@@ -1604,21 +1604,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.message.edit_reply_markup(reply_markup)
     await query.answer(MSG_ALRT)
 
-@Client.on_message(filters.command('request') & filters.incoming)
-async def request(client, message):
-    movie_name = message.text.replace("/request", "").replace("/Request", "").strip()
-    search = message.text
-    requested_movie = search.strip()
-    user_id = message.from_user.id
-    if not movie_name:
-        await message.reply_text(script.REQM)
-        return
-    await message.reply_text(script.REQ_REPLY.format(movie_name))
-    log_message = script.REQ_TEXT.format(message.from_user.mention, message.from_user.id, movie_name)
-    await client.send_message(LOG_CHANNEL, log_message,
-    reply_markup=InlineKeyboardMarkup([[
-            InlineKeyboardButton('Send Message', callback_data=f"notify_user_not_avail:{user_id}:{requested_movie}")]])
-            )    
             
 async def auto_filter(client, msg, spoll=False):
     #reqstr1 = msg.from_user.id
