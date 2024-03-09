@@ -23,7 +23,7 @@ async def request(client, message):
     search = message.text
     requested_movie = search.replace("/request", "").replace("/Request", "").strip()
     user_id = message.from_user.id
-    if not movie_name:
+    if not requested_movie:
         await message.reply_text(script.REQM)
         return
     await message.reply_text(script.REQ_REPLY.format(requested_movie))
