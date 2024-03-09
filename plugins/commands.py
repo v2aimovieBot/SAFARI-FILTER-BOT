@@ -32,7 +32,7 @@ async def request(client, message):
     reply_markup=InlineKeyboardMarkup(
         [
             [
-            InlineKeyboardButton('Nᴏᴛ Aᴠᴀɪʟᴀʙʟᴇ 😒', callback_data=f"not_available:{user_id}:{requested_movie}"),
+            InlineKeyboardButton('Nᴏᴛ Aᴠᴀɪʟᴀʙʟᴇ ❌', callback_data=f"not_available:{user_id}:{requested_movie}"),
             InlineKeyboardButton('Aʟʀᴇᴀᴅʏ Aᴠᴀɪʟᴀʙʟᴇ ✅', callback_data=f"already_available:{user_id}:{requested_movie}")
         ],[
             InlineKeyboardButton('Uᴘʟᴏᴀᴅᴇᴅ 👍', callback_data=f"uploaded:{user_id}:{requested_movie}")
