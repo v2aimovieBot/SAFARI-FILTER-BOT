@@ -1242,7 +1242,74 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
         await query.answer(MSG_ALRT)
-
+        
+    elif data.startswith("not_available"):
+        _, user_id, movie = data.split(":")
+        try:
+            safari = [[
+                    InlineKeyboardButton(text=f"🗑 Delete Log ❌", callback_data = "close_data")
+                    ]]
+            reply_markup = InlineKeyboardMarkup(safari)
+            await client.send_message(int(user_id), f"ᴡᴇ ᴄᴏᴜʟᴅɴ'ᴛ ғɪɴᴅ ᴛʜᴇ ᴄᴏɴᴛᴇɴᴛ ʏᴏᴜ ʀᴇǫᴜᴇꜱᴛᴇᴅ. 👉 `{movie}`")
+            await query.edit_message_text(text=f"Mᴇꜱꜱᴀɢᴇ Sᴇɴᴅ Sᴜᴄᴄᴇꜱꜱғᴜʟʟʏ ✅\n\n⏳ꜱᴛᴀᴛᴜꜱ : Nᴏᴛ Aᴠᴀɪʟᴀʙʟᴇ 😒.\n🪪ᴜꜱᴇʀɪᴅ : `{user_id}`\n🎞ᴄᴏɴᴛᴇɴᴛ : `{movie}`", reply_markup=InlineKeyboardMarkup(safari))
+        except Exception as e:
+            print(e)  # print the error message
+            await query.answer(f"☣something went wrong sweetheart\n\n{e}", show_alert=True)
+            return
+    elif data.startswith("already_available"):
+        _, user_id, movie = data.split(":")
+        try:
+            safari = [[
+                    InlineKeyboardButton(text=f"🗑 Delete Log ❌", callback_data = "close_data")
+                    ]]
+            reply_markup = InlineKeyboardMarkup(safari)
+            await client.send_message(int(user_id), f"Tʜᴇ ᴄᴏɴᴛᴇɴᴛ ʏᴏᴜ ʀᴇǫᴜᴇꜱᴛᴇᴅ ɪꜱ ᴀʟʀᴇᴀᴅʏ ᴀᴠᴀɪʟᴀʙʟᴇ, Cᴏɴᴛᴇɴᴛ ɴᴀᴍᴇ `{movie}`\n\nPʟᴇᴀꜱᴇ ʀᴇǫᴜᴇꜱᴛ ᴄᴏʀʀᴇᴄᴛ ᴄᴏɴᴛᴇɴᴛ ɴᴀᴍᴇ\nDᴏ ɴᴏᴛ ᴡʀɪᴛᴇ ᴀɴʏᴛʜɪɴɢ ᴇxᴄᴇᴘᴛ ᴄᴏɴᴛᴇɴᴛ ɴᴀᴍᴇ ᴏʀ ʏᴇᴀʀ\n\nExᴀᴍᴘʟᴇ: Sʜᴀɪᴛᴀᴀɴ 𝟸𝟶𝟸𝟺\n\nSᴇʀɪᴇꜱ Exᴀᴍᴘʟᴇ: Mᴏɴᴇʏ Hᴇɪꜱᴛ ꜱ𝟶𝟺ᴇ𝟶𝟷 | ꜱ𝟶𝟺 ᴇ𝟶𝟷\n\nSᴇɴᴅ Cᴏɴᴛᴇɴᴛ Nᴀᴍᴇ Hᴇʀᴇ <a href={GRP_LNK}</a>")
+            await query.edit_message_text(text=f"Mᴇꜱꜱᴀɢᴇ Sᴇɴᴅ Sᴜᴄᴄᴇꜱꜱғᴜʟʟʏ ✅\n\n⏳ꜱᴛᴀᴛᴜꜱ : Aᴠᴀɪʟᴀʙʟᴇ 😒.\n🪪ᴜꜱᴇʀɪᴅ : `{user_id}`\n🎞ᴄᴏɴᴛᴇɴᴛ : `{movie}`", reply_markup=InlineKeyboardMarkup(safari))
+        except Exception as e:
+            print(e)  # print the error message
+            await query.answer(f"☣something went wrong sweetheart\n\n{e}", show_alert=True)
+            return
+    elif data.startswith("uploaded"):
+        _, user_id, movie = data.split(":")
+        try:
+            safari = [[
+                    InlineKeyboardButton(text=f"🗑 Delete Log ❌", callback_data = "close_data")
+                    ]]
+            reply_markup = InlineKeyboardMarkup(safari)
+            await client.send_message(int(user_id), f"Tʜᴇ ᴄᴏɴᴛᴇɴᴛ ʏᴏᴜ ʀᴇǫᴜᴇꜱᴛᴇᴅ ʜᴀꜱ ʙᴇᴇɴ ᴜᴘʟᴏᴀᴅᴇᴅ, Cᴏɴᴛᴇɴᴛ ɴᴀᴍᴇ `{movie}`\n\nSᴇɴᴅ Cᴏɴᴛᴇɴᴛ Nᴀᴍᴇ Hᴇʀᴇ <a href={GRP_LNK}</a>")
+            await query.edit_message_text(text=f"Mᴇꜱꜱᴀɢᴇ Sᴇɴᴅ Sᴜᴄᴄᴇꜱꜱғᴜʟʟʏ ✅\n\n⏳ꜱᴛᴀᴛᴜꜱ : Uᴘʟᴏᴀᴅᴇᴅ 😒.\n🪪ᴜꜱᴇʀɪᴅ : `{user_id}`\n🎞ᴄᴏɴᴛᴇɴᴛ : `{movie}`", reply_markup=InlineKeyboardMarkup(safari))
+        except Exception as e:
+            print(e)  # print the error message
+            await query.answer(f"☣something went wrong sweetheart\n\n{e}", show_alert=True)
+            return
+    elif data.startswith("pending"):
+        _, user_id, movie = data.split(":")
+        try:
+            safari = [[
+                InlineKeyboardButton('Aᴠᴀɪʟᴀʙʟᴇ ✅', callback_data=f"uploaded")
+            ],[
+                InlineKeyboardButton('Nᴏᴛ Aᴠᴀɪʟᴀʙʟᴇ ❌', callback_data=f"uploaded")
+            ]]
+            reply_markup = InlineKeyboardMarkup(safari)
+            await client.send_message(int(user_id), f"Yᴏᴜʀ ʀᴇǫᴜᴇꜱᴛ ʜᴀꜱ ʙᴇᴇɴ ᴛᴀᴋᴇɴ ᴀɴᴅ ᴡɪʟʟ ʙᴇ ᴜᴘʟᴏᴀᴅᴇᴅ ɪɴ 𝟷 ᴏʀ 𝟸 ᴅᴀʏꜱ. Cᴏɴᴛᴇɴᴛ ɴᴀᴍᴇ `{movie}`")
+            await query.edit_message_text(text=f"Mᴇꜱꜱᴀɢᴇ Sᴇɴᴅ Sᴜᴄᴄᴇꜱꜱғᴜʟʟʏ ✅\n\n⏳ꜱᴛᴀᴛᴜꜱ : Pᴇɴᴅɪɴɢ 😒.\n🪪ᴜꜱᴇʀɪᴅ : `{user_id}`\n🎞ᴄᴏɴᴛᴇɴᴛ : `{movie}`", reply_markup=InlineKeyboardMarkup(safari))
+        except Exception as e:
+            print(e)  # print the error message
+            await query.answer(f"☣something went wrong sweetheart\n\n{e}", show_alert=True)
+            return
+    elif data.startswith("spelling_error"):
+        _, user_id, movie = data.split(":")
+        try:
+            safari = [[
+                    InlineKeyboardButton(text=f"🗑 Delete Log ❌", callback_data = "close_data")
+                    ]]
+            reply_markup = InlineKeyboardMarkup(safari)
+            await client.send_message(int(user_id), f"Tʜᴇ ɴᴀᴍᴇ ᴏғ ᴛʜᴇ ᴄᴏɴᴛᴇɴᴛ ʏᴏᴜ ʀᴇǫᴜᴇꜱᴛᴇᴅ ɪꜱ ɪɴᴄᴏʀʀᴇᴄᴛ, Nᴀᴍᴇ ɪꜱ ᴡʀᴏɴɢ `{movie}`\n\nPʟᴇᴀꜱᴇ ʀᴇǫᴜᴇꜱᴛ ᴄᴏʀʀᴇᴄᴛ ɴᴀᴍᴇ\nAɴᴅ ʀᴇǫᴜᴇꜱᴛ ᴛʜᴇ ɴᴀᴍᴇ ᴀɴᴅ ʏᴇᴀʀ ᴏғ ᴛʜᴇ ᴄᴏɴᴛᴇɴᴛ\n\nExᴀᴍᴘʟᴇ: Sʜᴀɪᴛᴀᴀɴ 𝟸𝟶𝟸𝟺\n\nSᴇʀɪᴇꜱ Exᴀᴍᴘʟᴇ: Mᴏɴᴇʏ Hᴇɪꜱᴛ ꜱ𝟶𝟺ᴇ𝟶𝟷 | ꜱ𝟶𝟺 ᴇ𝟶𝟷\n\nSᴇɴᴅ Cᴏɴᴛᴇɴᴛ Nᴀᴍᴇ Hᴇʀᴇ <a href={GRP_LNK}</a>")
+            await query.edit_message_text(text=f"Mᴇꜱꜱᴀɢᴇ Sᴇɴᴅ Sᴜᴄᴄᴇꜱꜱғᴜʟʟʏ ✅\n\n⏳ꜱᴛᴀᴛᴜꜱ : Sᴘᴇʟʟɪɴɢ Eʀʀᴏʀ 🕵️.\n🪪ᴜꜱᴇʀɪᴅ : `{user_id}`\n🎞ᴄᴏɴᴛᴇɴᴛ : `{movie}`", reply_markup=InlineKeyboardMarkup(safari))
+        except Exception as e:
+            print(e)  # print the error message
+            await query.answer(f"☣something went wrong sweetheart\n\n{e}", show_alert=True)
+            return
     elif query.data == "filters":
         buttons = [[
             InlineKeyboardButton('Mᴀɴᴜᴀʟ FIʟᴛᴇʀ', callback_data='manuelfilter'),
@@ -1303,19 +1370,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
-    elif data.startswith("notify_user_not_avail"):
-        _, user_id, movie = data.split(":")
-        # Send message to user
-        try:
-            await client.send_message(int(user_id), f"😒 oops! sona, Your requested content named `{movie}` is not available right now, we are really trying our best to serve you this content, can you please provide us some more details related to your query `{movie}`, \nSend details to Admin**Send here...**</a>\n\n❤ Thank You for the contribution")
-            await query.edit_message_text(text=f"- __**User notified successfully sweetie...✅**__\n\n⏳**Status** : Not Available 😒.\n🪪**UserID** : `{user_id}`\n🎞**Content** : `{movie}`\n\n\n🦋")
-        # Delete callback query message
-            # await query.answer()
-            # await query.delete()
-        except Exception as e:
-            print(e)  # print the error message
-            await query.answer(f"☣something went wrong sweetheart\n\n{e}", show_alert=True)
-            return
     elif query.data == "about":
         buttons = [[
             InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', url=GRP_LNK),
