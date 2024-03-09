@@ -1284,11 +1284,14 @@ async def cb_handler(client: Client, query: CallbackQuery):
             return
     elif data.startswith("pending"):
         _, user_id, movie = data.split(":")
+        search = query.message.text
+        user_id = query.message.from_user.id
+        requested_movie = search.replace("/request", "").replace("/Request", "").strip()
         try:
             safari = [[
-                InlineKeyboardButton('Aᴠᴀɪʟᴀʙʟᴇ ✅', callback_data=f"uploaded")
+                InlineKeyboardButton('Aᴠᴀɪʟᴀʙʟᴇ ✅', callback_data=f"uploaded:{user_id}:{requested_movie}")
             ],[
-                InlineKeyboardButton('Nᴏᴛ Aᴠᴀɪʟᴀʙʟᴇ ❌', callback_data=f"uploaded")
+                InlineKeyboardButton('Nᴏᴛ Aᴠᴀɪʟᴀʙʟᴇ ❌', callback_data=f"not_available:{requested_movie}")
             ]]
             reply_markup = InlineKeyboardMarkup(safari)
             await client.send_message(int(user_id), f"Yᴏᴜʀ ʀᴇǫᴜᴇꜱᴛ ʜᴀꜱ ʙᴇᴇɴ ᴛᴀᴋᴇɴ ᴀɴᴅ ᴡɪʟʟ ʙᴇ ᴜᴘʟᴏᴀᴅᴇᴅ ɪɴ 𝟷 ᴏʀ 𝟸 ᴅᴀʏꜱ. Cᴏɴᴛᴇɴᴛ ɴᴀᴍᴇ `{movie}`")
