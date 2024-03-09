@@ -1276,7 +1276,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton(text=f"🗑 Delete Log ❌", callback_data = "close_data")
                     ]]
             reply_markup = InlineKeyboardMarkup(safari)
-            await client.send_message(int(user_id), f"Tʜᴇ ᴄᴏɴᴛᴇɴᴛ ʏᴏᴜ ʀᴇǫᴜᴇꜱᴛᴇᴅ ʜᴀꜱ ʙᴇᴇɴ ᴜᴘʟᴏᴀᴅᴇᴅ, Cᴏɴᴛᴇɴᴛ ɴᴀᴍᴇ `{movie}`\n\nSᴇɴᴅ Cᴏɴᴛᴇɴᴛ Nᴀᴍᴇ Hᴇʀᴇ <a href={GRP_LNK}</a>")
+            await client.send_message(int(user_id), f"Tʜᴇ ᴄᴏɴᴛᴇɴᴛ ʏᴏᴜ ʀᴇǫᴜᴇꜱᴛᴇᴅ ʜᴀꜱ ʙᴇᴇɴ ᴜᴘʟᴏᴀᴅᴇᴅ, Cᴏɴᴛᴇɴᴛ ɴᴀᴍᴇ `{movie}`\n\nSᴇɴᴅ Cᴏɴᴛᴇɴᴛ Nᴀᴍᴇ Hᴇʀᴇ: <a href={GRP_LNK}>Rᴇǫ Gʀᴏᴜᴘ</a>")
             await query.edit_message_text(text=f"Mᴇꜱꜱᴀɢᴇ Sᴇɴᴅ Sᴜᴄᴄᴇꜱꜱғᴜʟʟʏ ✅\n\n⏳ꜱᴛᴀᴛᴜꜱ : Uᴘʟᴏᴀᴅᴇᴅ 😒.\n🪪ᴜꜱᴇʀɪᴅ : `{user_id}`\n🎞ᴄᴏɴᴛᴇɴᴛ : `{movie}`", reply_markup=InlineKeyboardMarkup(safari))
         except Exception as e:
             print(e)  # print the error message
