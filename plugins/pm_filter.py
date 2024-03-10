@@ -644,10 +644,22 @@ async def advantage_spoll_choker(bot, query):
                 k = (movie, files, offset, total_results)
                 await auto_filter(bot, query, k)
             else:
+                requested_movie = query.message.text
+                user_id = query.message.from_user.id
                 reqstr1 = query.from_user.id if query.from_user else 0
                 reqstr = await bot.get_users(reqstr1)
                 if NO_RESULTS_MSG:
-                    await bot.send_message(chat_id=LOG_CHANNEL, text=(script.NORSLTS.format(query.message.chat.title, query.message.chat.id, reqstr.mention, movie)))
+                    safari = [[
+                        InlineKeyboardButton('Nᴏᴛ Aᴠᴀɪʟᴀʙʟᴇ ❌', callback_data=f"not_available:{user_id}:{requested_movie}"),
+                        InlineKeyboardButton('Aʟʀᴇᴀᴅʏ Aᴠᴀɪʟᴀʙʟᴇ ✅', callback_data=f"already_available:{user_id}:{requested_movie}")
+                    ],[
+                        InlineKeyboardButton('Uᴘʟᴏᴀᴅᴇᴅ 👍', callback_data=f"uploaded:{user_id}:{requested_movie}")
+                    ],[
+                        InlineKeyboardButton('Pᴇɴᴅɪɴɢ 🕐', callback_data=f"pending:{user_id}:{requested_movie}"),
+                        InlineKeyboardButton('Sᴘᴇʟʟɪɴɢ Eʀʀᴏʀ 🤯', callback_data=f"spelling_error:{user_id}:{requested_movie}")
+                    ]]
+                    reply_markup = InlineKeyboardMarkup(safari)
+                    await bot.send_message(chat_id=LOG_CHANNEL, text=(script.NORSLTS.format(query.message.chat.title, query.message.chat.id, reqstr.mention, movie, reply_markup=InlineKeyboardMarkup(safari))))
                 k = await query.message.edit(script.MVE_NT_FND)
                 await asyncio.sleep(10)
                 await k.delete()
