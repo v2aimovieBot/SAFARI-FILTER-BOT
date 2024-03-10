@@ -34,7 +34,7 @@ async def request(client, message):
             InlineKeyboardButton('Jᴏɪɴ Cʜᴀɴɴᴇʟ', url=f"{link}")
         ],[
             InlineKeyboardButton('Vɪᴇᴡ Rᴇᴏ̨ᴜᴇsᴛ', callback_data=f"{report_link.link}")
-        ]))
+        ]]))
 
 @Client.on_message(filters.command("start") & filters.incoming)
 async def start(client, message):
