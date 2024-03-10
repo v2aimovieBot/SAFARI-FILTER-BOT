@@ -650,13 +650,13 @@ async def advantage_spoll_choker(bot, query):
                 reqstr = await bot.get_users(reqstr1)
                 if NO_RESULTS_MSG:
                     safari = [[
-                        InlineKeyboardButton('Nᴏᴛ Aᴠᴀɪʟᴀʙʟᴇ ❌', callback_data=f"not_available:{reqstr}:{movie}"),
-                        InlineKeyboardButton('Aʟʀᴇᴀᴅʏ Aᴠᴀɪʟᴀʙʟᴇ ✅', callback_data=f"already_available:{reqstr}:{movie}")
+                        InlineKeyboardButton('Nᴏᴛ Aᴠᴀɪʟᴀʙʟᴇ ❌', callback_data=f"not_available:{reqstr1}:{movie}"),
+                        InlineKeyboardButton('Aʟʀᴇᴀᴅʏ Aᴠᴀɪʟᴀʙʟᴇ ✅', callback_data=f"already_available:{reqstr1}:{movie}")
                     ],[
-                        InlineKeyboardButton('Uᴘʟᴏᴀᴅᴇᴅ 👍', callback_data=f"uploaded:{reqstr}:{movie}")
+                        InlineKeyboardButton('Uᴘʟᴏᴀᴅᴇᴅ 👍', callback_data=f"uploaded:{reqstr1}:{movie}")
                     ],[
-                        InlineKeyboardButton('Pᴇɴᴅɪɴɢ 🕐', callback_data=f"pending:{reqstr}:{movie}"),
-                        InlineKeyboardButton('Sᴘᴇʟʟɪɴɢ Eʀʀᴏʀ 🤯', callback_data=f"spelling_error:{reqstr}:{movie}")
+                        InlineKeyboardButton('Pᴇɴᴅɪɴɢ 🕐', callback_data=f"pending:{reqstr1}:{movie}"),
+                        InlineKeyboardButton('Sᴘᴇʟʟɪɴɢ Eʀʀᴏʀ 🤯', callback_data=f"spelling_error:{reqstr1}:{movie}")
                     ]]
                     reply_markup = InlineKeyboardMarkup(safari)
                     await bot.send_message(chat_id=LOG_CHANNEL, text=(script.NORSLTS.format(query.message.chat.title, query.message.chat.id, reqstr.mention, movie)), reply_markup=InlineKeyboardMarkup(safari))
