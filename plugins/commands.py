@@ -18,26 +18,22 @@ logger = logging.getLogger(__name__)
 
 BATCH_FILES = {}
 
-@Client.on_message(filters.command('request') & filters.incoming & filters.text)
+@Client.on_message(filters.command('request') & filters.incoming & filters.text & filters.group)
 async def request(client, message):
     search = message.text
     requested_movie = search.replace("/request", "").replace("/Request", "").strip()
     user_id = message.from_user.id
     if not requested_movie:
-        await message.reply_text("✅ <i><u>Tᴏ ʀᴇǫᴜᴇꜱᴛ ғᴏʀ ᴀ ᴍᴏᴠɪᴇ ᴘʟᴇᴀꜱᴇ ᴘᴀꜱꜱ ᴍᴏᴠɪᴇ ᴅᴇᴛᴀɪʟꜱ ᴀʟᴏɴɢ ᴡɪᴛʜ</i></u>\n/request ᴄᴏᴍᴍᴀɴᴅ.\nExᴀᴍᴘʟᴇ: <code>/request Pushpa 2021</code>")
+        await message.reply_text("✅ Tᴏ ʀᴇǫᴜᴇꜱᴛ ғᴏʀ ᴀ ᴍᴏᴠɪᴇ ᴘʟᴇᴀꜱᴇ ᴘᴀꜱꜱ ᴍᴏᴠɪᴇ ᴅᴇᴛᴀɪʟꜱ ᴀʟᴏɴɢ ᴡɪᴛʜ\n/request ᴄᴏᴍᴍᴀɴᴅ.\nExᴀᴍᴘʟᴇ: <code>/request Pushpa 2021</code>")
         return
-    await message.reply_text(text=f"✅ <i><u>Yᴏᴜʀ Rᴇǫᴜᴇꜱᴛ ғᴏʀ<u><i> <b> {requested_movie} </b> <i><u>ʜᴀꜱ ʙᴇᴇɴ ꜱᴜʙᴍɪᴛᴛᴇᴅ ᴛᴏ ᴛʜᴇ ᴀᴅᴍɪɴꜱ.\n\n🚀 Yᴏᴜʀ Rᴇǫᴜᴇꜱᴛ Wɪʟʟ Bᴇ Uᴘʟᴏᴀᴅᴇᴅ ꜱᴏᴏɴ.\n\n📌 Yᴏᴜ ᴡɪʟʟ ʙᴇ ɪɴғᴏʀᴍᴇᴅ ᴀғᴛᴇʀ ᴜᴘʟᴏᴀᴅɪɴɢ<u><i>")
-    await client.send_message(LOG_CHANNEL,f"📝 #REQUESTED_CONTENT 📝\n\nʙᴏᴛ - {temp.B_NAME}\nɴᴀᴍᴇ - {message.from_user.mention} (<code>{message.from_user.id}</code>)\nRᴇǫᴜᴇꜱᴛ - <code>{requested_movie}</code>",
+    link = await client.create_chat_invite_link(int(LOG_CHANNEL))
+    await message.reply_text(text=f"✅ Yᴏᴜʀ Rᴇǫᴜᴇꜱᴛ ғᴏʀ <b> {requested_movie} </b> ʜᴀꜱ ʙᴇᴇɴ ꜱᴜʙᴍɪᴛᴛᴇᴅ ᴛᴏ ᴛʜᴇ ᴀᴅᴍɪɴꜱ.\n\n🚀 Yᴏᴜʀ Rᴇǫᴜᴇꜱᴛ Wɪʟʟ Bᴇ Uᴘʟᴏᴀᴅᴇᴅ ꜱᴏᴏɴ.\n\n📌 Yᴏᴜ ᴡɪʟʟ ʙᴇ ɪɴғᴏʀᴍᴇᴅ ᴀғᴛᴇʀ ᴜᴘʟᴏᴀᴅɪɴɢ")
+    report_link = await client.send_message(LOG_CHANNEL,f"📝 #REQUESTED_CONTENT 📝\n\nʙᴏᴛ - {temp.B_NAME}\nɴᴀᴍᴇ - {message.from_user.mention} (<code>{message.from_user.id}</code>)\nRᴇǫᴜᴇꜱᴛ - <code>{requested_movie}</code>",
     reply_markup=InlineKeyboardMarkup(
         [[
-            InlineKeyboardButton('Pending⏰', callback_data=f"pending:{user_id}:{requested_movie}"),
+            InlineKeyboardButton('Jᴏɪɴ Cʜᴀɴɴᴇʟ', url=f"{link}")
         ],[
-            InlineKeyboardButton('Uploaded Done✅', callback_data=f"uploaded:{user_id}:{requested_movie}")
-        ],[
-            InlineKeyboardButton('Already Available🕵️', callback_data=f"already_available:{user_id}:{requested_movie}")
-        ],[
-            InlineKeyboardButton('Not Available🙅', callback_data=f"not_available:{user_id}:{requested_movie}"),
-            InlineKeyboardButton('Spell Error✍️', callback_data=f"spelling_error:{user_id}:{requested_movie}")]
+            InlineKeyboardButton('Vɪᴇᴡ Rᴇᴏ̨ᴜᴇsᴛ', callback_data=f"{report_link.link}")
         ]))
 
 @Client.on_message(filters.command("start") & filters.incoming)
