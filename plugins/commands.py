@@ -26,7 +26,7 @@ async def request(client, message):
     if not requested_movie:
         await message.reply_text("✅ Tᴏ ʀᴇǫᴜᴇꜱᴛ ғᴏʀ ᴀ ᴍᴏᴠɪᴇ ᴘʟᴇᴀꜱᴇ ᴘᴀꜱꜱ ᴍᴏᴠɪᴇ ᴅᴇᴛᴀɪʟꜱ ᴀʟᴏɴɢ ᴡɪᴛʜ\n/request ᴄᴏᴍᴍᴀɴᴅ.\nExᴀᴍᴘʟᴇ: <code>/request Pushpa 2021</code>")
         return
-    link = await client.create_chat_invite_link(int(LOG_CHANNEL))
+    # llink = await client.create_chat_invite_link(int(LOG_CHANNEL))
     report_link = await client.send_message(LOG_CHANNEL,f"📝 #REQUESTED_CONTENT 📝\n\nʙᴏᴛ - {temp.B_NAME}\nɴᴀᴍᴇ - {message.from_user.mention} (<code>{message.from_user.id}</code>)\nRᴇǫᴜᴇꜱᴛ - <code>{requested_movie}</code>",
     reply_markup=InlineKeyboardMarkup(
         [[
@@ -37,9 +37,9 @@ async def request(client, message):
     await message.reply_text(text=f"✅ Yᴏᴜʀ Rᴇǫᴜᴇꜱᴛ ғᴏʀ <b> {requested_movie} </b> ʜᴀꜱ ʙᴇᴇɴ ꜱᴜʙᴍɪᴛᴛᴇᴅ ᴛᴏ ᴛʜᴇ ᴀᴅᴍɪɴꜱ.\n\n🚀 Yᴏᴜʀ Rᴇǫᴜᴇꜱᴛ Wɪʟʟ Bᴇ Uᴘʟᴏᴀᴅᴇᴅ ꜱᴏᴏɴ.\n\n📌 Yᴏᴜ ᴡɪʟʟ ʙᴇ ɪɴғᴏʀᴍᴇᴅ ᴀғᴛᴇʀ ᴜᴘʟᴏᴀᴅɪɴɢ",
     reply_markup=InlineKeyboardMarkup(
         [[
-            InlineKeyboardButton('Jᴏɪɴ Cʜᴀɴɴᴇʟ', url=f"{link}")
+            InlineKeyboardButton('Jᴏɪɴ Cʜᴀɴɴᴇʟ', url=f"report_link")
         ],[
-            InlineKeyboardButton('Vɪᴇᴡ Rᴇᴏ̨ᴜᴇsᴛ', callback_data=f"{report_link.link}")
+            InlineKeyboardButton('Vɪᴇᴡ Rᴇᴏ̨ᴜᴇsᴛ', url=f"{report_link.link}")
         ]]))
 
 @Client.on_message(filters.command("start") & filters.incoming)
