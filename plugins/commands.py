@@ -28,20 +28,11 @@ async def request(client, message):
         return
     await message.reply_text(text=f"📍 Yᴏᴜʀ Rᴇǫᴜᴇꜱᴛ ғᴏʀ <b> {requested_movie} </b> ᴅʜꜱʜ ꜱʙᴅᴇʜ ʜᴀꜱ ʙᴇᴇɴ ꜱᴜʙᴍɪᴛᴛᴇᴅ ᴛᴏ ᴛʜᴇ ᴀᴅᴍɪɴꜱ.\n\n🚀 Yᴏᴜʀ Rᴇǫᴜᴇꜱᴛ Wɪʟʟ Bᴇ Uᴘʟᴏᴀᴅᴇᴅ ꜱᴏᴏɴ.\n\n📌 Yᴏᴜ ᴡɪʟʟ ʙᴇ ɪɴғᴏʀᴍᴇᴅ ᴀғᴛᴇʀ ᴜᴘʟᴏᴀᴅɪɴɢ")
     await client.send_message(LOG_CHANNEL, text=f"ʙᴏᴛ - {temp.B_NAME}\nɴᴀᴍᴇ - {message.from_user.mention} (<code>{message.from_user.id}</code>)\nRᴇǫᴜᴇꜱᴛ - <code>{requested_movie}</code>",
-    reply_markup=InlineKeyboardMarkup(
-        [
-            [
-            InlineKeyboardButton('Nᴏᴛ Aᴠᴀɪʟᴀʙʟᴇ ❌', callback_data=f"not_available:{user_id}:{requested_movie}"),
-            InlineKeyboardButton('Aʟʀᴇᴀᴅʏ Aᴠᴀɪʟᴀʙʟᴇ ✅', callback_data=f"already_available:{user_id}:{requested_movie}")
-        ],[
-            InlineKeyboardButton('Uᴘʟᴏᴀᴅᴇᴅ 👍', callback_data=f"uploaded:{user_id}:{requested_movie}")
-        ],[
-            InlineKeyboardButton('Pᴇɴᴅɪɴɢ 🕐', callback_data=f"pending:{user_id}:{requested_movie}"),
-            InlineKeyboardButton('Sᴘᴇʟʟɪɴɢ Eʀʀᴏʀ 🤯', callback_data=f"spelling_error:{user_id}:{requested_movie}")
-            ]
-          ]
-        )
-    )
+    reply_markup=InlineKeyboardMarkup([
+            [InlineKeyboardButton('Nᴏᴛ Aᴠᴀɪʟᴀʙʟᴇ ❌', callback_data=f"not_available:{user_id}:{requested_movie}"),InlineKeyboardButton('Aʟʀᴇᴀᴅʏ Aᴠᴀɪʟᴀʙʟᴇ ✅', callback_data=f"already_available:{user_id}:{requested_movie}")],
+            [InlineKeyboardButton('Uᴘʟᴏᴀᴅᴇᴅ 👍', callback_data=f"uploaded:{user_id}:{requested_movie}")],
+            [InlineKeyboardButton('Pᴇɴᴅɪɴɢ 🕐', callback_data=f"pending:{user_id}:{requested_movie}"),InlineKeyboardButton('Sᴘᴇʟʟɪɴɢ Eʀʀᴏʀ 🤯', callback_data=f"spelling_error:{user_id}:{requested_movie}")]
+            ]))
 
 @Client.on_message(filters.command("start") & filters.incoming)
 async def start(client, message):
