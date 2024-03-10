@@ -24,11 +24,10 @@ async def request(client, message):
     requested_movie = search.replace("/request", "").replace("/Request", "").strip()
     user_id = message.from_user.id
     if not requested_movie:
-        await message.reply_text(script.REQM)
+        await message.reply_text("📽️ Tᴏ ʀᴇǫᴜᴇꜱᴛ ғᴏʀ ᴀ ᴍᴏᴠɪᴇ ᴘʟᴇᴀꜱᴇ ᴘᴀꜱꜱ ᴍᴏᴠɪᴇ ᴅᴇᴛᴀɪʟꜱ ᴀʟᴏɴɢ ᴡɪᴛʜ /request ᴄᴏᴍᴍᴀɴᴅ.\nExᴀᴍᴘʟᴇ: <code>Pushpa 2021</code>")
         return
-    await message.reply_text(script.REQ_REPLY.format(requested_movie))
-    log_message = script.REQ_TEXT.format(message.from_user.mention, message.from_user.id, requested_movie)
-    await client.send_message(LOG_CHANNEL, log_message,
+    await message.reply_text("📍 Yᴏᴜʀ Rᴇǫᴜᴇꜱᴛ ғᴏʀ <b>{requested_movie}</b> ᴅʜꜱʜ ꜱʙᴅᴇʜ ʜᴀꜱ ʙᴇᴇɴ ꜱᴜʙᴍɪᴛᴛᴇᴅ ᴛᴏ ᴛʜᴇ ᴀᴅᴍɪɴꜱ.\n\n🚀 Yᴏᴜʀ Rᴇǫᴜᴇꜱᴛ Wɪʟʟ Bᴇ Uᴘʟᴏᴀᴅᴇᴅ ꜱᴏᴏɴ.\n\n📌 Yᴏᴜ ᴡɪʟʟ ʙᴇ ɪɴғᴏʀᴍᴇᴅ ᴀғᴛᴇʀ ᴜᴘʟᴏᴀᴅɪɴɢ")
+    await client.send_message(LOG_CHANNEL, text=f"ʙᴏᴛ - {temp.B_NAME}\nɴᴀᴍᴇ - {message.from_user.mention} (<code>{message.from_user.id}</code>)\nRᴇǫᴜᴇꜱᴛ - <code>{requested_movie}</code>",
     reply_markup=InlineKeyboardMarkup(
         [
             [
