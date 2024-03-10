@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 BATCH_FILES = {}
 
-@Client.on_message(filters.command('request') & filters.incoming)
+@Client.on_message(filters.command('request') & filters.incoming & filters.text)
 async def request(client, message):
     search = message.text
     requested_movie = search.replace("/request", "").replace("/Request", "").strip()
