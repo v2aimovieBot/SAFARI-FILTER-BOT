@@ -659,7 +659,7 @@ async def advantage_spoll_choker(bot, query):
                         InlineKeyboardButton('Sᴘᴇʟʟɪɴɢ Eʀʀᴏʀ 🤯', callback_data=f"spelling_error:{user_id}:{requested_movie}")
                     ]]
                     reply_markup = InlineKeyboardMarkup(safari)
-                    await bot.send_message(chat_id=LOG_CHANNEL, text=(script.NORSLTS.format(query.message.chat.title, query.message.chat.id, reqstr.mention, movie, reply_markup=InlineKeyboardMarkup(safari))))
+                    await bot.send_message(chat_id=LOG_CHANNEL, text=(script.NORSLTS.format(query.message.chat.title, query.message.chat.id, reqstr.mention, movie)), reply_markup=InlineKeyboardMarkup(safari))
                 k = await query.message.edit(script.MVE_NT_FND)
                 await asyncio.sleep(10)
                 await k.delete()
