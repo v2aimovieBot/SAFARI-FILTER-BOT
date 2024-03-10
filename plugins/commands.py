@@ -24,14 +24,14 @@ async def request(client, message):
     requested_movie = search.replace("/request", "").replace("/Request", "").strip()
     user_id = message.from_user.id
     if not requested_movie:
-        await message.reply_text("📽️ Tᴏ ʀᴇǫᴜᴇꜱᴛ ғᴏʀ ᴀ ᴍᴏᴠɪᴇ ᴘʟᴇᴀꜱᴇ ᴘᴀꜱꜱ ᴍᴏᴠɪᴇ ᴅᴇᴛᴀɪʟꜱ ᴀʟᴏɴɢ ᴡɪᴛʜ\n/request ᴄᴏᴍᴍᴀɴᴅ.\nExᴀᴍᴘʟᴇ: <code>/request Pushpa 2021</code>")
+        await message.reply_text("✅ Tᴏ ʀᴇǫᴜᴇꜱᴛ ғᴏʀ ᴀ ᴍᴏᴠɪᴇ ᴘʟᴇᴀꜱᴇ ᴘᴀꜱꜱ ᴍᴏᴠɪᴇ ᴅᴇᴛᴀɪʟꜱ ᴀʟᴏɴɢ ᴡɪᴛʜ\n/request ᴄᴏᴍᴍᴀɴᴅ.\nExᴀᴍᴘʟᴇ: <code>/request Pushpa 2021</code>")
         return
     await message.reply_text(text=f"📍 Yᴏᴜʀ Rᴇǫᴜᴇꜱᴛ ғᴏʀ <b> {requested_movie} </b> ᴅʜꜱʜ ꜱʙᴅᴇʜ ʜᴀꜱ ʙᴇᴇɴ ꜱᴜʙᴍɪᴛᴛᴇᴅ ᴛᴏ ᴛʜᴇ ᴀᴅᴍɪɴꜱ.\n\n🚀 Yᴏᴜʀ Rᴇǫᴜᴇꜱᴛ Wɪʟʟ Bᴇ Uᴘʟᴏᴀᴅᴇᴅ ꜱᴏᴏɴ.\n\n📌 Yᴏᴜ ᴡɪʟʟ ʙᴇ ɪɴғᴏʀᴍᴇᴅ ᴀғᴛᴇʀ ᴜᴘʟᴏᴀᴅɪɴɢ")
     await client.send_message(LOG_CHANNEL,f"-🕵️ #REQUESTED_CONTENT 🕵️-\n\nʙᴏᴛ - {temp.B_NAME}\nɴᴀᴍᴇ - {message.from_user.mention} (<code>{message.from_user.id}</code>)\nRᴇǫᴜᴇꜱᴛ - <code>{requested_movie}</code>\n\n⌛",
     reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton('Nᴏᴛ Aᴠᴀɪʟᴀʙʟᴇ ❌', callback_data=f"not_available:{user_id}:{requested_movie}"),InlineKeyboardButton('Aʟʀᴇᴀᴅʏ Aᴠᴀɪʟᴀʙʟᴇ ✅', callback_data=f"already_available:{user_id}:{requested_movie}")],
-            [InlineKeyboardButton('Uᴘʟᴏᴀᴅᴇᴅ 👍', callback_data=f"uploaded:{user_id}:{requested_movie}")],
-            [InlineKeyboardButton('Pᴇɴᴅɪɴɢ 🕐', callback_data=f"pending:{user_id}:{requested_movie}"),InlineKeyboardButton('Sᴘᴇʟʟɪɴɢ Eʀʀᴏʀ 🤯', callback_data=f"spelling_error:{user_id}:{requested_movie}")]
+            [InlineKeyboardButton('Not Available❌', callback_data=f"not_available:{user_id}:{requested_movie}"),InlineKeyboardButton('Already Available✅', callback_data=f"already_available:{user_id}:{requested_movie}")],
+            [InlineKeyboardButton('Uploaded👍', callback_data=f"uploaded:{user_id}:{requested_movie}")],
+            [InlineKeyboardButton('Pending🕐', callback_data=f"pending:{user_id}:{requested_movie}"),InlineKeyboardButton('Spell Error✍️', callback_data=f"spelling_error:{user_id}:{requested_movie}")]
             ]))
 
 @Client.on_message(filters.command("start") & filters.incoming)
