@@ -1163,3 +1163,14 @@ async def stop_button(bot, message):
     await asyncio.sleep(3)
     await msg.edit("<b><i><u>ʙᴏᴛ ɪꜱ ʀᴇꜱᴛᴀʀᴛᴇᴅ</u> ✅</i></b>")
     os.execl(sys.executable, sys.executable, *sys.argv)
+
+@Client.on_message(filters.command("plans"))
+async def plan(client, message):
+    user_id = message.from_user.id 
+    users = message.from_user.mention 
+    btn = [[
+	
+        InlineKeyboardButton("🎁 Tᴀᴘ Tᴏ Vɪᴇᴡ Pʟᴀɴꜱ 🎁", callback_data='seeplans')],[InlineKeyboardButton("❌ ᴄʟᴏꜱᴇ ❌", callback_data="close_data")
+    ]]
+    await message.reply_photo(photo=(SUBSCRIPTION), caption=script.PREMIUM_TEXT, reply_markup=InlineKeyboardMarkup(btn))
+    
