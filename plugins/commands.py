@@ -381,7 +381,7 @@ async def start(client, message):
                     f_caption=f_caption
             if f_caption is None:
                 f_caption = f"{' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@'), files1.file_name.split()))}"
-            if IS_VERIFY and not await check_verification(client, message.from_user.id) and not PREMIUM_USER:
+            if IS_VERIFY and not await check_verification(client, message.from_user.id) and message.from_user.id not in PREMIUM_USER:
                 btn = [[
                         InlineKeyboardButton("♻️ Vᴇʀɪғʏ ♻️", url=await get_token(client, message.from_user.id, f"https://telegram.me/{temp.U_NAME}?start=", file_id)),
                         InlineKeyboardButton("⚠️ Hᴏᴡ Tᴏ Vᴇʀɪғʏ ⚠️", url=HOW_TO_VERIFY)
@@ -410,7 +410,7 @@ async def start(client, message):
             )
             
     elif data.startswith("files"):
-        if PREMIUM_USER:
+        if message.from_user.id in PREMIUM_USER:
             files = await get_file_details(file_id)
             if not files:
                 return await message.reply('<b><i>Nᴏ Sᴜᴄʜ Fɪʟᴇ Eᴇxɪsᴛ.</b></i>')
@@ -460,7 +460,7 @@ async def start(client, message):
     if not files_:
         pre, file_id = ((base64.urlsafe_b64decode(data + "=" * (-len(data) % 4))).decode("ascii")).split("_", 1)
         try:
-            if IS_VERIFY and not await check_verification(client, message.from_user.id) and not PREMIUM_USER:
+            if IS_VERIFY and not await check_verification(client, message.from_user.id) and message.from_user.id not in PREMIUM_USER:
                 btn = [[
                     InlineKeyboardButton("♻️ Vᴇʀɪғʏ ♻️", url=await get_token(client, message.from_user.id, f"https://telegram.me/{temp.U_NAME}?start=", file_id)),
                     InlineKeyboardButton("⚠️ Hᴏᴡ Tᴏ Vᴇʀɪғʏ ⚠️", url=HOW_TO_VERIFY)
@@ -516,7 +516,7 @@ async def start(client, message):
             f_caption=f_caption
     if f_caption is None:
         f_caption = f"{' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('Linkz') and not x.startswith('{') and not x.startswith('Links')and not x.startswith('boxoffice') and not x.startswith('Original') and not x.startswith('Villa') and not x.startswith('@') and not x.startswith('www'), files.file_name.split()))}"
-    if IS_VERIFY and not await check_verification(client, message.from_user.id) and not PREMIUM_USER:
+    if IS_VERIFY and not await check_verification(client, message.from_user.id) and message.from_user.id not in PREMIUM_USER:
         btn = [[
             InlineKeyboardButton("♻️ Vᴇʀɪғʏ ♻️", url=await get_token(client, message.from_user.id, f"https://telegram.me/{temp.U_NAME}?start=", file_id)),
             InlineKeyboardButton("⚠️ Hᴏᴡ Tᴏ Vᴇʀɪғʏ ⚠️", url=HOW_TO_VERIFY)
