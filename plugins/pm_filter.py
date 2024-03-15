@@ -1388,7 +1388,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InputMediaPhoto(SUBSCRIPTION)
             )
             await query.message.edit_text(
-                text=script.PREMIUM_TXT.format(query.from_user.mention),
+                text=script.PREMIUM_TXT,
                 reply_markup=reply_markup,
                 parse_mode=enums.ParseMode.HTML
             )
@@ -1409,7 +1409,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup = InlineKeyboardMarkup(buttons)
             await query.message.reply_photo(
                 photo=(SUBSCRIPTION),
-                caption=script.PREMIUM_TXT.format(query.from_user.mention),
+                caption=script.PREMIUM_TXT,
                 reply_markup=reply_markup,
                 parse_mode=enums.ParseMode.HTML
             )
@@ -1424,7 +1424,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
-            text=script.PURCHASE_TXT.format(query.from_user.mention),
+            text=script.PURCHASE_TXT,
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
@@ -1437,7 +1437,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
-            text=script.UPI_TXT.format(query.from_user.mention),
+            text=script.UPI_TXT,
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
@@ -1455,7 +1455,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InputMediaPhoto(CODE)
             )
         await query.message.edit_text(
-            text=script.QR_TXT.format(query.from_user.mention),
+            text=script.QR_TXT,
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )       
