@@ -1172,5 +1172,5 @@ async def plan(client, message):
 	
         InlineKeyboardButton("🎁 Tᴀᴘ Tᴏ Vɪᴇᴡ Pʟᴀɴꜱ 🎁", callback_data='seeplans')],[InlineKeyboardButton("❌ ᴄʟᴏꜱᴇ ❌", callback_data="close_data")
     ]]
-    await message.reply_photo(photo=(SUBSCRIPTION), caption=script.PREMIUM_TEXT, reply_markup=InlineKeyboardMarkup(btn))
+    await message.reply_photo(photo=(SUBSCRIPTION), caption=script.PREMIUM_TXT, reply_markup=InlineKeyboardMarkup(btn))
     
