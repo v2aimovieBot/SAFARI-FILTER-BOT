@@ -53,7 +53,7 @@ async def stream_download(bot, query):
     download = f"{URL}download/{msg.id}"
     non_online = await stream_site(online)
     non_download = await stream_site(download)
-    if not PREMIUM_USER and STREAM_LINK_MODE == True:  
+    if user_id not in PREMIUM_USER and STREAM_LINK_MODE == True:  
         await msg.reply_text(text=f"tg://openmessage?user_id={user_id}\n•• ᴜꜱᴇʀɴᴀᴍᴇ : {username} LINK MODE ON",
             reply_markup=InlineKeyboardMarkup([[
                     InlineKeyboardButton("📥 ᴅᴏᴡɴʟᴏᴀᴅ 📥", url=non_download),
@@ -101,7 +101,7 @@ async def reply_stream(client, message):
     non_download = await stream_site(download)
 
     file_name = file_id.file_name.replace("_", " ").replace(".mp4", "").replace(".mkv", "").replace(".", " ")
-    if not PREMIUM_USER and STREAM_LINK_MODE == True:  
+    if user_id not in PREMIUM_USER and STREAM_LINK_MODE == True:  
         await message.reply_text(
             text=f"<b>𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !\n\n📂 Fɪʟᴇ ɴᴀᴍᴇ :</b> <a href={CHNL_LNK}>{file_name}</a>\n\n<b>📥 Dᴏᴡɴʟᴏᴀᴅ : {non_download}\n\n🖥WATCH  : {non_online}\n\n⚠️ Tʜᴇ ʟɪɴᴋ ᴡɪʟʟ ɴᴏᴛ ᴇxᴘɪʀᴇ ᴜɴᴛɪʟ ᴛʜᴇ ʙᴏᴛ'ꜱ ꜱᴇʀᴠᴇʀ ɪꜱ ᴄʜᴀɴɢᴇᴅ. 🔋\n\n𝐍𝐨𝐭𝐞:\n𝐓𝐡𝐞 𝐀𝐝𝐬-𝐅𝐫𝐞𝐞 𝐒𝐞𝐫𝐯𝐢𝐜𝐞𝐬 𝐎𝐧𝐥𝐲 𝐅𝐨𝐫 𝐏𝐫𝐞𝐦𝐢𝐮𝐦 𝐔𝐬𝐞𝐫𝐬\n\n‼️Tᴏ ᴋɴᴏᴡ ᴍᴏʀᴇ, ᴄʜᴇᴀᴋ ʙᴇʟᴏᴡ..!!!</b>",
             reply_markup=InlineKeyboardMarkup(
@@ -902,14 +902,14 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     return
                 else:
                     await query.answer(f"Hᴇʏ {query.from_user.first_name}, Tʜɪs Is Nᴏᴛ Yᴏᴜʀ Mᴏᴠɪᴇ Rᴇǫᴜᴇsᴛ. Rᴇǫᴜᴇsᴛ Yᴏᴜʀ's !", show_alert=True)
-            elif settings['botpm'] and settings['is_shortlink'] and not in PREMIUM_USER:
+            elif settings['botpm'] and settings['is_shortlink'] and clicked not in PREMIUM_USER:
                 if clicked == typed:
                     temp.SHORT[clicked] = query.message.chat.id
                     await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=short_{file_id}")
                     return
                 else:
                     await query.answer(f"Hᴇʏ {query.from_user.first_name}, Tʜɪs Is Nᴏᴛ Yᴏᴜʀ Mᴏᴠɪᴇ Rᴇǫᴜᴇsᴛ. Rᴇǫᴜᴇsᴛ Yᴏᴜʀ's !", show_alert=True)
-            elif settings['is_shortlink'] and not settings['botpm'] and not in PREMIUM_USER:
+            elif settings['is_shortlink'] and not settings['botpm'] and clicked not in PREMIUM_USER:
                 if clicked == typed:
                     temp.SHORT[clicked] = query.message.chat.id
                     await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=short_{file_id}")
@@ -924,7 +924,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     await query.answer(f"Hᴇʏ {query.from_user.first_name}, Tʜɪs Is Nᴏᴛ Yᴏᴜʀ Mᴏᴠɪᴇ Rᴇǫᴜᴇsᴛ. Rᴇǫᴜᴇsᴛ Yᴏᴜʀ's !", show_alert=True)
             else:
                 if clicked == typed:
-                    if IS_VERIFY and not await check_verification(client, query.from_user.id) and not in PREMIUM_USER:
+                    if IS_VERIFY and not await check_verification(client, query.from_user.id) and clicked not in PREMIUM_USER:
                         btn = [[
                             InlineKeyboardButton("Vᴇʀɪғʏ", url=await get_token(client, query.from_user.id, f"https://telegram.me/{temp.U_NAME}?start=", file_id)),
                             InlineKeyboardButton("Hᴏᴡ Tᴏ Vᴇʀɪғʏ", url=HOW_TO_VERIFY)
@@ -976,7 +976,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             if settings['botpm'] and settings['is_shortlink']:
                 await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=sendfiles1_{key}")
                 return
-            elif settings['is_shortlink'] and not settings['botpm'] and not in PREMIUM_USER:
+            elif settings['is_shortlink'] and not settings['botpm'] and clicked not in PREMIUM_USER:
                 await query.answer(url=f"https://telegram.me/{temp.U_NAME}?start=sendfiles2_{key}")
                 return
             else:
@@ -1014,7 +1014,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         if f_caption is None:
             f_caption = f"{title}"
         await query.answer()
-        if IS_VERIFY and not await check_verification(client, query.from_user.id) and not in PREMIUM_USER:
+        if IS_VERIFY and not await check_verification(client, query.from_user.id) and clicked not in PREMIUM_USER:
             btn = [[
                 InlineKeyboardButton("Vᴇʀɪғʏ", url=await get_token(client, query.from_user.id, f"https://telegram.me/{temp.U_NAME}?start=", file_id)),
                 InlineKeyboardButton("Hᴏᴡ Tᴏ Vᴇʀɪғʏ", url=HOW_TO_VERIFY)
@@ -1373,7 +1373,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             return
             
     elif query.data == "premium_info":
-        if not in PREMIUM_USER:
+        user_id = user_id = query.from_user.id
+        if user_id in PREMIUM_USER:
             await query.answer("ʏᴏᴜ ᴀʟʀᴇᴀᴅʏ ʜᴀᴠᴇ ᴀ ᴘʟᴀɴ ғʀɪᴇɴᴅ 🙂\n\nᴡᴀɪᴛ ғᴏʀ ʏᴏᴜʀ  ᴘʟᴀɴ ᴛᴏ ᴇɴᴅ, ᴛʜᴇɴ ʏᴏᴜ ᴄᴀɴ ʙᴜʏ ᴀ ɴᴇᴡ ᴘʟᴀɴ", show_alert=True)      
             return 
         else:
@@ -1393,7 +1394,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             )
             
     elif query.data == "seeplans":
-        if not in PREMIUM_USER:
+        user_id = query.from_user.id
+        if user_id in PREMIUM_USER:
             await query.answer("ʏᴏᴜ ᴀʟʀᴇᴀᴅʏ ʜᴀᴠᴇ ᴀ ᴘʟᴀɴ ғʀɪᴇɴᴅ 🙂\n\nᴡᴀɪᴛ ғᴏʀ ʏᴏᴜʀ  ᴘʟᴀɴ ᴛᴏ ᴇɴᴅ, ᴛʜᴇɴ ʏᴏᴜ ᴄᴀɴ ʙᴜʏ ᴀ ɴᴇᴡ ᴘʟᴀɴ", show_alert=True)      
             return 
         else:
