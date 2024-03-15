@@ -1379,7 +1379,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             return 
         else:
             buttons = [[
-                InlineKeyboardButton('🎁 ᴛᴀᴘ ᴛᴏ ʙᴜʏ ᴘʟᴀɴ 🎁', callback_data='free')
+                InlineKeyboardButton('🎁 ᴛᴀᴘ ᴛᴏ ʙᴜʏ ᴘʟᴀɴ 🎁', callback_data='purchase')
             ]]
             reply_markup = InlineKeyboardMarkup(buttons)
             await client.edit_message_media(
