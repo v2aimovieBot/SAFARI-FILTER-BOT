@@ -897,7 +897,7 @@ async def requests(client, message):
     if files:
         await message.reply_text(f"Hᴇʏ {message.from_user.mention},\n\nʏᴏᴜʀ ʀᴇǫᴜᴇꜱᴛ ɪꜱ ᴀʟʀᴇᴀᴅʏ ᴀᴠᴀɪʟᴀʙʟᴇ ✅\n\n📂 ꜰɪʟᴇꜱ ꜰᴏᴜɴᴅ : {str(total_results)}\n🔍 ꜱᴇᴀʀᴄʜ : <code>{requested_movie}</code>\n\n‼️ ᴛʜɪs ɪs ᴀ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ sᴏ ᴛʜᴀᴛ ʏᴏᴜ ᴄᴀɴ'ᴛ ɢᴇᴛ ғɪʟᴇs ғʀᴏᴍ ʜᴇʀᴇ...", reply_to_message_id=message.id, disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup([[
-            InlineKeyboardButton('📝 ꜱᴇᴀʀᴄʜ ʜᴇʀᴇ : 👇', url=GRP_LNK]]))
+            InlineKeyboardButton('📝 ꜱᴇᴀʀᴄʜ ʜᴇʀᴇ : 👇', url=GRP_LNK)]]))
     else:    
         await message.reply_text(text=f"✅ आपकी फिल्म <b> {requested_movie} </b> हमारे एडमिन के पास भेज दिया गया है.\n\n🚀 जैसे ही फिल्म अपलोड होती हैं हम आपको मैसेज देंगे.\n\n📌 ध्यान दे - एडमिन अपने काम में व्यस्त हो सकते है इसलिए फिल्म अपलोड होने में टाइम लग सकता हैं")
         await client.send_message(LOG_CHANNEL,f"📝 #REQUESTED_CONTENT 📝\n\nʙᴏᴛ - {temp.B_NAME}\nɴᴀᴍᴇ - {message.from_user.mention} (<code>{message.from_user.id}</code>)\nRᴇǫᴜᴇꜱᴛ - <code>{requested_movie}</code>",
