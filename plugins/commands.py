@@ -889,7 +889,7 @@ async def save_template(client, message):
 async def requests(client, message):
     search = message.text
     requested_movie = search.replace("/request", "").replace("/Request", "").replace("#Request", "").replace("#request", "").strip()
-    files, offset, total_results = await get_search_results(message.chat.id, requested_movie.lower(), search, offset=0, filter=True)
+    files, offset, total_results = await get_search_results(requested_movie.lower(), offset=0, filter=True)
     user_id = message.from_user.id
     if not requested_movie:
         await message.reply_text("🙅 (फिल्म रिक्वेस्ट करने के लिए कृपया फिल्म का नाम और साल साथ में लिखें\nकुछ इस तरह 👇\n<code>/request Pushpa 2021</code>")
