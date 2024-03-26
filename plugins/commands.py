@@ -889,13 +889,13 @@ async def save_template(client, message):
 async def requests(client, message):
     search = message.text
     requested_movie = search.replace("/request", "").replace("/Request", "").replace("#Request", "").replace("#request", "").strip()
-    files, _, _ = await get_search_results(requested_movie.lower(), offset=0, filter=True)
+    files, offset, total_results = await get_search_results(message.chat.id, requested_movie.lower(), search, offset=0, filter=True)
     user_id = message.from_user.id
     if not requested_movie:
         await message.reply_text("🙅 (फिल्म रिक्वेस्ट करने के लिए कृपया फिल्म का नाम और साल साथ में लिखें\nकुछ इस तरह 👇\n<code>/request Pushpa 2021</code>")
         return
     if files:
-        await message.reply_text(f"Hᴇʏ {message.from_user.mention},\n\nʏᴏᴜʀ ʀᴇǫᴜᴇꜱᴛ ɪꜱ ᴀʟʀᴇᴀᴅʏ ᴀᴠᴀɪʟᴀʙʟᴇ ✅\n\n📂 ꜰɪʟᴇꜱ ꜰᴏᴜɴᴅ : {str(files)}\n🔍 ꜱᴇᴀʀᴄʜ : <code>{requested_movie}</code>\n\n‼️ ᴛʜɪs ɪs ᴀ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ sᴏ ᴛʜᴀᴛ ʏᴏᴜ ᴄᴀɴ'ᴛ ɢᴇᴛ ғɪʟᴇs ғʀᴏᴍ ʜᴇʀᴇ...", reply_to_message_id=message.id, disable_web_page_preview=True,
+        await message.reply_text(f"Hᴇʏ {message.from_user.mention},\n\nʏᴏᴜʀ ʀᴇǫᴜᴇꜱᴛ ɪꜱ ᴀʟʀᴇᴀᴅʏ ᴀᴠᴀɪʟᴀʙʟᴇ ✅\n\n📂 ꜰɪʟᴇꜱ ꜰᴏᴜɴᴅ : {total_results}\n🔍 ꜱᴇᴀʀᴄʜ : <code>{requested_movie}</code>\n\n‼️ ᴛʜɪs ɪs ᴀ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ sᴏ ᴛʜᴀᴛ ʏᴏᴜ ᴄᴀɴ'ᴛ ɢᴇᴛ ғɪʟᴇs ғʀᴏᴍ ʜᴇʀᴇ...", reply_to_message_id=message.id,
         reply_markup=InlineKeyboardMarkup([[
             InlineKeyboardButton('📝 ꜱᴇᴀʀᴄʜ ʜᴇʀᴇ : 👇', url=GRP_LNK)]]))
     else:    
