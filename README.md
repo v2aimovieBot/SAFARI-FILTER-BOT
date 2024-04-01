@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="https://graph.org/file/49ed60d0e26414234285d.jpg" alt=JK-FILTER-BOT Logo">
+  <img src="https://graph.org/file/07038c2e2f6211fc132c0.jpg" alt=JK-FILTER-BOT Logo">
 </p>
 <h1 align="center">
-  𝑱𝑲 𝑭𝑰𝑳𝑻𝑬𝑹 𝑩𝑶𝑻
+  𝑺𝑨𝑭𝑨𝑹𝑰 𝑭𝑰𝑳𝑻𝑬𝑹 𝑩𝑶𝑻
 </h1>
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com/?lines=𝑊𝑒𝑙𝑐𝑜𝑚𝑒+𝑇𝑜+𝑱𝑲+𝑭𝑰𝑳𝑻𝑬𝑹+𝑩𝑶𝑻!;𝐶𝑟𝑒𝑎𝑡𝑒𝑑+𝑏𝑦+˜”°•✩•°”˜+𝙹𝙺+𝙳𝙴𝚅𝙻𝙾𝙿𝙴𝚁+˜”°•✩•°”˜!;𝐴+𝑠𝑖𝑚𝑝𝑙𝑒+𝑎𝑛𝑑+𝑝𝑜𝑤𝑒𝑟𝑓𝑢𝑙+𝐵𝑜𝑡!;𝐼𝑛𝑑𝑒𝑥𝑒𝑠+𝐹𝑖𝑙𝑒𝑠+𝑎𝑏𝑜𝑣𝑒+2𝐺𝐵;𝐴+𝐵𝑜𝑡+𝑤𝑖𝑡ℎ+𝑑𝑜𝑢𝑏𝑙𝑒+𝑏𝑢𝑡𝑡𝑜𝑛!;𝑆𝑡𝑎𝑟𝑡+𝑚𝑒𝑠𝑠𝑎𝑔𝑒+𝑤𝑖𝑡ℎ+𝑝𝑖𝑐!;𝐴𝑛𝑑+𝑚𝑜𝑟𝑒+𝑓𝑒𝑎𝑡𝑢𝑟𝑒𝑠!)
