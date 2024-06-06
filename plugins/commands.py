@@ -396,13 +396,13 @@ async def start(client, message):
                       InlineKeyboardButton("🖥️ ᴡᴀᴛᴄʜ / ᴅᴏᴡɴʟᴏᴀᴅ 📥", callback_data=f"streaming#{file_id}")],
                       [InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', url=GRP_LNK),
                       InlineKeyboardButton('Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ', url=CHNL_LNK)]]))
-                if FILES_DELETE == True:
-                    del_txt = await message.reply_text("<b>⚠️ᴛʜɪs ғɪʟᴇ ᴡɪʟʟ ʙᴇ ᴅᴇʟᴇᴛᴇᴅ ᴀғᴛᴇʀ 5 ᴍɪɴᴜᴛᴇs\n\nᴘʟᴇᴀsᴇ ғᴏʀᴡᴀʀᴅ ᴛʜᴇ ғɪʟᴇ sᴏᴍᴇᴡʜᴇʀᴇ ʙᴇғᴏʀᴇ ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ..</b>")
-                    sf = msg
-                    await asyncio.sleep(300)
-                    await sf.delete() 
-                    await del_txt.edit("<b>Your message is successfully deleted!!!</b>")
-            return 
+            if FILES_DELETE == True:
+                del_txt = await message.reply_text("<b>⚠️ᴛʜɪs ғɪʟᴇ ᴡɪʟʟ ʙᴇ ᴅᴇʟᴇᴛᴇᴅ ᴀғᴛᴇʀ 5 ᴍɪɴᴜᴛᴇs\n\nᴘʟᴇᴀsᴇ ғᴏʀᴡᴀʀᴅ ᴛʜᴇ ғɪʟᴇ sᴏᴍᴇᴡʜᴇʀᴇ ʙᴇғᴏʀᴇ ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ..</b>")
+                sf = msg
+                await asyncio.sleep(300)
+                await sf.delete() 
+                await del_txt.edit("<b>Your message is successfully deleted!!!</b>")
+                return 
             
     elif data.startswith("all"):
         files = temp.GETALL.get(file_id)
@@ -451,14 +451,14 @@ async def start(client, message):
                     ]
                 )
             )
-            if FILES_DELETE == True:
-                filesarr.append(msg) 
-            k = await client.send_message(chat_id = message.from_user.id, text=f"<b><u>❗️❗️❗️IMPORTANT❗️️❗️❗️</u></b>\n\nThis Movie Files/Videos will be deleted in <b><u>10 mins</u> 🫥 <i></b>(Due to Copyright Issues)</i>.\n\n<b><i>Please forward this ALL Files/Videos to your Saved Messages and Start Download there</i></b>")
-            for x in filesarr:
-                await asyncio.sleep(300)
-                await x.delete()
-            await k.edit_text("<b>Your All Files/Videos is successfully deleted!!!</b>")
-            return   
+        if FILES_DELETE == True:
+            filesarr.append(msg) 
+        k = await client.send_message(chat_id = message.from_user.id, text=f"<b><u>❗️❗️❗️IMPORTANT❗️️❗️❗️</u></b>\n\nThis Movie Files/Videos will be deleted in <b><u>10 mins</u> 🫥 <i></b>(Due to Copyright Issues)</i>.\n\n<b><i>Please forward this ALL Files/Videos to your Saved Messages and Start Download there</i></b>")
+        for x in filesarr:
+            await asyncio.sleep(300)
+            await x.delete()
+        await k.edit_text("<b>Your All Files/Videos is successfully deleted!!!</b>")
+        return   
     files_ = await get_file_details(file_id)           
     if not files_:
         pre, file_id = ((base64.urlsafe_b64decode(data + "=" * (-len(data) % 4))).decode("ascii")).split("_", 1)
