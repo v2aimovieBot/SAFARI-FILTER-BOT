@@ -1988,7 +1988,6 @@ async def auto_filter(client, msg, spoll=False):
     temp.SEND_ALL_TEMP[message.from_user.id] = files
     temp.KEYWORD[message.from_user.id] = search
     temp.SHORT[message.from_user.id] = message.chat.id
-    files_link = ''
     pre = 'filep' if settings['file_secure'] else 'file'
     if settings["button"]:
         btn = [
