@@ -1,5 +1,3 @@
-#pyrogram>=2.0.30
-#https://codeload.github.com/KurimuzonAkuma/pyrogram/zip/refs/heads/dev
 git+https://github.com/safarideveloper/pyrogram
 umongo
 tgcrypto
