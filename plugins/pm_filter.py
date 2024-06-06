@@ -131,7 +131,8 @@ async def reply_stream(client, message):
         
 @Client.on_message(filters.text & filters.incoming)
 async def give_filter(client, message):
-    await message.react(emoji=random.choice(REACTION))
+    try:
+        await message.react(emoji=random.choice(REACTION))
     if PM_FILTER is True:
         if message.chat.id != SUPPORT_CHAT_ID:
             glob = await global_filters(client, message)
@@ -169,7 +170,9 @@ async def give_filter(client, message):
             chat_id=LOG_CHANNEL,
             text=f"<b>#𝐏𝐌_𝐌𝐒𝐆\n\nNᴀᴍᴇ : {user}\n\nID : {user_id}\n\nMᴇssᴀɢᴇ : {content}</b>"
         )
-
+    except Exception as e:
+        await message.reply(f"error\n{e}") 
+    
 @Client.on_callback_query(filters.regex(r"^next"))
 async def next_page(bot, query):
     curr_time = datetime.now(pytz.timezone('Asia/Kolkata')).time()
