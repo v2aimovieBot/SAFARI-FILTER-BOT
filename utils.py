@@ -51,11 +51,11 @@ class temp(object):
     VERIFY = {}
     SEND_ALL_TEMP = {}
     KEYWORD = {}
-    BOT = None
-    JK_DEV = {}
+    SAFARIDEV = {}
     SHORT = {}
     GETALL = {}
     SPELL_CHECK = {}
+    IMDB_CAP = {}
     
         
 async def is_subscribed(bot, query=None, userid=None):
@@ -620,50 +620,7 @@ async def send_all(bot, userid, files, ident):
             parse_mode=enums.ParseMode.MARKDOWN
             )
         return 'fsub'
-    if await db.has_premium_access(userid):
-        for file in files:
-            f_caption = file.caption
-            title = ' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('Linkz') and not x.startswith('{') and not x.startswith('Links') and not x.startswith('@') and not x.startswith('www'), file.file_name.split()))
-            size = get_size(file.file_size)
-            if CUSTOM_FILE_CAPTION:
-                try:
-                    f_caption = CUSTOM_FILE_CAPTION.format(file_name='' if title is None else title,
-                                                            file_size='' if size is None else size,
-                                                            file_caption='' if f_caption is None else f_caption)
-                except Exception as e:
-                    print(e)
-                    f_caption = f_caption
-            if f_caption is None:
-                f_caption = f"{title}"
-            try:
-            
-                await bot.send_cached_media(
-                    chat_id=userid,
-                    file_id=file.file_id,
-                    caption=f_caption,
-                    protect_content=True if ident == "filep" else False,
-                    reply_markup=InlineKeyboardMarkup(
-                        [
-                            [
-                            InlineKeyboardButton("🖥️ ᴡᴀᴛᴄʜ / ᴅᴏᴡɴʟᴏᴀᴅ 📥", callback_data=f"streaming#{file.file_id}")
-                        ],[
-                            InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', url=GRP_LNK),
-                            InlineKeyboardButton('Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ', url=CHNL_LNK)
-                            ]
-                        ]
-                    )
-                )
-            except UserIsBlocked:
-                logger.error(f"Usᴇʀ: {userid} ʙʟᴏᴄᴋᴇᴅ ᴛʜᴇ ʙᴏᴛ. Uɴʙʟᴏᴄᴋ ᴛʜᴇ ʙᴏᴛ!")
-                return "Usᴇʀ ɪs ʙʟᴏᴄᴋᴇᴅ ᴛʜᴇ ʙᴏᴛ ! Uɴʙʟᴏᴄᴋ ᴛᴏ sᴇɴᴅ ғɪʟᴇs!"
-            except PeerIdInvalid:
-                logger.error("Eʀʀᴏʀ: Pᴇᴇʀ ID ɪɴᴠᴀʟɪᴅ !")
-                return "Pᴇᴇʀ ID ɪɴᴠᴀʟɪᴅ !"
-            except Exception as e:
-                logger.error(f"Eʀʀᴏʀ: {e}")
-                return f"Eʀʀᴏʀ: {e}"
-        return 'jk_dev'
-    if IS_VERIFY and not await check_verification(bot, userid):
+    if IS_VERIFY and not await check_verification(bot, userid) and query.message.from_user.id not in PREMIUM_USER:
         btn = [[
             InlineKeyboardButton("Vᴇʀɪғʏ", url=await get_token(bot, userid, f"https://telegram.me/{temp.U_NAME}?start=", 'send_all')),
             InlineKeyboardButton("Hᴏᴡ Tᴏ Vᴇʀɪғʏ", url=HOW_TO_VERIFY)
@@ -774,3 +731,82 @@ async def check_verification(bot, userid):
                 return True
         else:
             return True
+
+async def get_text(settings, remaining_seconds, files, query, total_results, search):
+    try:
+        if settings["imdb"]:
+            IMDB_CAP = temp.IMDB_CAP.get(query.from_user.id)
+            CAPTION = f"☠️ ᴛɪᴛʟᴇ : <code>{search}</code>\n📂 ᴛᴏᴛᴀʟ ꜰɪʟᴇꜱ : <code>{total_results}</code>\n📝 ʀᴇǫᴜᴇsᴛᴇᴅ ʙʏ : {query.from_user.mention}\n⏰ ʀᴇsᴜʟᴛ ɪɴ : <code>{remaining_seconds} Sᴇᴄᴏɴᴅs</code>\n⚜️ ᴘᴏᴡᴇʀᴇᴅ ʙʏ : 👇\n⚡ {query.message.chat.title}\n\n</b>"
+            if IMDB_CAP:
+                cap = IMDB_CAP
+                if settings['is_shortlink']:
+                    for file in files: #shortlink = true, imdb = true
+                        cap += f"\n\n<b><a href='https://telegram.me/{temp.U_NAME}?start=short_{file.file_id}'>📁 {get_size(file.file_size)} ▷ {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('Original') and not x.startswith('Villa') and not x.startswith('Linkz') and not x.startswith('{') and not x.startswith('boxoffice') and not x.startswith('Links') and not x.startswith('@') and not x.startswith('www'), file.file_name.split()))}</a></b>"
+                else:
+                    for file in files: #shortlink = false, imdb = true
+                        cap += f"\n\n<b><a href='https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}'>📁 {get_size(file.file_size)} ▷ {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('Original') and not x.startswith('Villa') and not x.startswith('Linkz') and not x.startswith('{') and not x.startswith('boxoffice') and not x.startswith('Links') and not x.startswith('@') and not x.startswith('www'), file.file_name.split()))}</a></b>"
+            else:
+                imdb = await get_poster(search, file=(files[0]).file_name) if settings["imdb"] else None
+                if imdb:
+                    TEMPLATE = script.IMDB_TEMPLATE_TXT
+                    cap = TEMPLATE.format(
+                        qurey=search,
+                        title=imdb['title'],
+                        votes=imdb['votes'],
+                        aka=imdb["aka"],
+                        seasons=imdb["seasons"],
+                        box_office=imdb['box_office'],
+                        localized_title=imdb['localized_title'],
+                        kind=imdb['kind'],
+                        imdb_id=imdb["imdb_id"],
+                        cast=imdb["cast"],
+                        runtime=imdb["runtime"],
+                        countries=imdb["countries"],
+                        certificates=imdb["certificates"],
+                        languages=imdb["languages"],
+                        director=imdb["director"],
+                        writer=imdb["writer"],
+                        producer=imdb["producer"],
+                        composer=imdb["composer"],
+                        cinematographer=imdb["cinematographer"],
+                        music_team=imdb["music_team"],
+                        distributors=imdb["distributors"],
+                        release_date=imdb['release_date'],
+                        year=imdb['year'],
+                        genres=imdb['genres'],
+                        poster=imdb['poster'],
+                        plot=imdb['plot'],
+                        rating=imdb['rating'],
+                        url=imdb['url'],
+                        **locals()
+                    )
+                    for file in files:
+                        cap += f"\n\n<b><a href='https://telegram.me/{temp.U_NAME}?start=short_{file.file_id}'>📁 {get_size(file.file_size)} ▷ {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('Original') and not x.startswith('Villa') and not x.startswith('Linkz') and not x.startswith('{') and not x.startswith('boxoffice') and not x.startswith('Links') and not x.startswith('@') and not x.startswith('www'), file.file_name.split()))}</a></b>"
+                else:
+                    if settings['is_shortlink']:
+                        cap = f"{CAPTION}" #shortlink = true, imdb = true
+                        cap+="<b>📚 <u>Your Requested Files</u> 👇\n\n</b>"
+                        for file in files:
+                            cap += f"<b><a href='https://telegram.me/{temp.U_NAME}?start=short_{file.file_id}'>📁 {get_size(file.file_size)} ▷ {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('Original') and not x.startswith('Villa') and not x.startswith('Linkz') and not x.startswith('{') and not x.startswith('boxoffice') and not x.startswith('Links') and not x.startswith('@') and not x.startswith('www'), file.file_name.split()))}\n\n</a></b>"
+                    else:
+                        cap = f"{CAPTION}" #shortlink = false, imdb = false
+                        cap+="<b>📚 <u>Your Requested Files</u> 👇\n\n</b>"
+                        for file in files:
+                            cap += f"<b><a href='https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}'>📁 {get_size(file.file_size)} ▷ {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('Original') and not x.startswith('Villa') and not x.startswith('Linkz') and not x.startswith('{') and not x.startswith('boxoffice') and not x.startswith('Links') and not x.startswith('@') and not x.startswith('www'), file.file_name.split()))}\n\n</a></b>"
+
+        else:
+            CAPTION = f"☠️ ᴛɪᴛʟᴇ : <code>{search}</code>\n📂 ᴛᴏᴛᴀʟ ꜰɪʟᴇꜱ : <code>{total_results}</code>\n📝 ʀᴇǫᴜᴇsᴛᴇᴅ ʙʏ : {query.from_user.mention}\n⏰ ʀᴇsᴜʟᴛ ɪɴ : <code>{remaining_seconds} Sᴇᴄᴏɴᴅs</code>\n⚜️ ᴘᴏᴡᴇʀᴇᴅ ʙʏ : 👇\n⚡ {query.message.chat.title}\n\n</b>"
+            if settings['is_shortlink']:
+                cap = f"{CAPTION}" #shortlink = true, imdb = false
+                cap+="<b>📚 <u>Your Requested Files</u> 👇\n\n</b>"
+                for file in files:
+                    cap += f"<b><a href='https://telegram.me/{temp.U_NAME}?start=short_{file.file_id}'>📁 {get_size(file.file_size)} ▷ {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('Original') and not x.startswith('Villa') and not x.startswith('Linkz') and not x.startswith('{') and not x.startswith('boxoffice') and not x.startswith('Links') and not x.startswith('@') and not x.startswith('www'), file.file_name.split()))}\n\n</a></b>"
+            else:
+                cap = f"{CAPTION}" #shortlink = false, imdb = false
+                cap+="<b>📚 <u>Your Requested Files</u> 👇\n\n</b>"
+                for file in files:
+                    cap += f"<b><a href='https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}'>📁 {get_size(file.file_size)} ▷ {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('Original') and not x.startswith('Villa') and not x.startswith('Linkz') and not x.startswith('{') and not x.startswith('boxoffice') and not x.startswith('Links') and not x.startswith('@') and not x.startswith('www'), file.file_name.split()))}\n\n</a></b>"
+        return cap
+    except Exception as e:
+        await query.answer(f"Error Found out\n\n{e}", show_alert=True)
+        return
