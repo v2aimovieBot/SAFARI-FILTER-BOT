@@ -546,7 +546,7 @@ async def select_quality(bot, query):
     await query.answer()
     
 @Client.on_callback_query(filters.regex(r"^seasons"))
-async def seasons_check(bot, query)
+async def seasons_check(bot, query):
     curr_time = datetime.now(pytz.timezone('Asia/Kolkata')).time()
     _, userid, seasons = query.data.split("#")
     if int(userid) not in [query.from_user.id, 0]:
