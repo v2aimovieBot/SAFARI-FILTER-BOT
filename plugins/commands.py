@@ -1186,11 +1186,12 @@ async def stop_button(bot, message):
 
 @Client.on_message(filters.command("plans"))
 async def plan(client, message):
-    user_id = message.from_user.id 
-    users = message.from_user.mention 
-    btn = [[
-	
-        InlineKeyboardButton("🎁 Tᴀᴘ Tᴏ Vɪᴇᴡ Pʟᴀɴꜱ 🎁", callback_data='seeplans')],[InlineKeyboardButton("❌ ᴄʟᴏꜱᴇ ❌", callback_data="close_data")
-    ]]
-    await message.reply_photo(photo=(SUBSCRIPTION), caption=script.PREMIUM_TEXT, reply_markup=InlineKeyboardMarkup(btn))
-    
+    try:
+        user_id = message.from_user.id 
+        users = message.from_user.mention 
+        btn = [[
+            InlineKeyboardButton("🎁 Tᴀᴘ Tᴏ Vɪᴇᴡ Pʟᴀɴꜱ 🎁", callback_data='seeplans')],[InlineKeyboardButton("❌ ᴄʟᴏꜱᴇ ❌", callback_data="close_data")
+        ]]
+        await message.reply_photo(photo=(SUBSCRIPTION), caption=script.PREMIUM_TEXT, reply_markup=InlineKeyboardMarkup(btn))
+    except Exception as e:
+        await message.reply(f"error found\n{e}")
