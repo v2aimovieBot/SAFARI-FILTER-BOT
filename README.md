@@ -47,7 +47,7 @@
 - [x] 𝐴𝑢𝑡𝑜 𝐷𝑒𝑙𝑒𝑡𝑒
 - [x] 𝐴𝑛𝑑 𝑀𝑜𝑟𝑒...
 
-<b>𝑇𝑜 𝑘𝑛𝑜𝑤 𝑎𝑏𝑜𝑢𝑡 𝑎𝑙𝑙 𝑓𝑒𝑎𝑡𝑢𝑟𝑒𝑠, 𝐽𝑜𝑖𝑛 𝑜𝑢𝑟 <a href='https://telegram.me/lusifilms'>𝑢𝑝𝑑𝑎𝑡𝑒𝑠 𝑐ℎ𝑎𝑛𝑛𝑒𝑙</a>.</b>
+<b>𝑇𝑜 𝑘𝑛𝑜𝑤 𝑎𝑏𝑜𝑢𝑡 𝑎𝑙𝑙 𝑓𝑒𝑎𝑡𝑢𝑟𝑒𝑠, 𝐽𝑜𝑖𝑛 𝑜𝑢𝑟 <a href='https://telegram.me/safari_bots'>𝑢𝑝𝑑𝑎𝑡𝑒𝑠 𝑐ℎ𝑎𝑛𝑛𝑒𝑙</a>.</b>
 
 ## 𝐶𝑜𝑚𝑚𝑎𝑛𝑑𝑠
 ```
@@ -89,6 +89,13 @@
 • /delg - 𝑇𝑜 𝑑𝑒𝑙𝑒𝑡𝑒 𝑎 𝑠𝑝𝑒𝑐𝑖𝑓𝑖𝑐 𝑔𝑙𝑜𝑏𝑎𝑙 𝑓𝑖𝑙𝑡𝑒𝑟.
 • /delallg - 𝑇𝑜 𝑑𝑒𝑙𝑒𝑡𝑒 𝑎𝑙𝑙 𝑔𝑙𝑜𝑏𝑎𝑙 𝑓𝑖𝑙𝑡𝑒𝑟𝑠 𝑓𝑟𝑜𝑚 𝑡ℎ𝑒 𝑏𝑜𝑡'𝑠 𝑑𝑎𝑡𝑎𝑏𝑎𝑠𝑒.
 • /deletefiles - 𝑇𝑜 𝑑𝑒𝑙𝑒𝑡𝑒 𝑃𝑟𝑒𝐷𝑉𝐷 𝑎𝑛𝑑 𝐶𝑎𝑚𝑅𝑖𝑝 𝐹𝑖𝑙𝑒𝑠 𝑓𝑟𝑜𝑚 𝑡ℎ𝑒 𝑏𝑜𝑡'𝑠 𝑑𝑎𝑡𝑎𝑏𝑎𝑠𝑒.
+• /shortlink - 𝑢𝑠𝑒 𝑎𝑛𝑦 𝑠ℎ𝑜𝑟𝑡𝑛𝑒𝑟 𝑖𝑛 𝑦𝑜𝑢𝑟 𝑔𝑟𝑜𝑢𝑝
+• /shortlink_info - 𝑠𝑒𝑒 𝑦𝑜𝑢𝑟 𝑐𝑜𝑛𝑛𝑒𝑐𝑡𝑒𝑑 𝑠ℎ𝑜𝑟𝑡𝑛𝑒𝑟 𝑠𝑖𝑡𝑒
+• /shortlink_off - 𝑜𝑓𝑓 𝑦𝑜𝑢𝑟 𝑔𝑟𝑜𝑢𝑝 𝑠ℎ𝑜𝑟𝑡𝑒𝑛𝑒𝑟
+• /shortlink_on - 𝑜𝑛 𝑦𝑜𝑢𝑟 𝑔𝑟𝑜𝑢𝑝 𝑠ℎ𝑜𝑟𝑡𝑙𝑖𝑛𝑘
+• /set_tutorial - ℎ𝑜𝑤 𝑡𝑜 𝑜𝑝𝑒𝑛 𝑦𝑜𝑢𝑟 𝑔𝑟𝑜𝑢𝑝 𝑠ℎ𝑜𝑟𝑡𝑛𝑒𝑟 𝑙𝑖𝑛𝑘, 𝑠𝑒𝑡 𝑣𝑖𝑑𝑒𝑜
+• /remove_tutorial - 𝑟𝑒𝑚𝑜𝑣𝑒 𝑦𝑜𝑢𝑟 𝑔𝑟𝑜𝑢𝑝 𝑡𝑢𝑡𝑜𝑟𝑖𝑎𝑙 𝑣𝑖𝑑𝑒𝑜
+
 ```
 
 ## Variables
@@ -102,16 +109,18 @@
 * `DATABASE_URI`: [mongoDB](https://www.mongodb.com) URI. Get this value from [mongoDB](https://www.mongodb.com). For more help watch this [video](https://youtu.be/1G1XwEOnxxo)
 * `DATABASE_NAME`: Name of the database in [mongoDB](https://www.mongodb.com). For more help watch this [video](https://youtu.be/1G1XwEOnxxo)
 * `LOG_CHANNEL` : A channel to log the activities of bot. Make sure bot is an admin in the channel.
+* `BIN_CHANNEL`: Stream stats channel id, fill log channel id, else other channel id
+* `FQDN`: Deployed app server link 🔗 without https:// or /
 ### Optional Variables
 * `PICS`: Telegraph links of images to show in start message.( Multiple images can be used separated by space )
 * `FILE_STORE_CHANNEL`: Channel from were file store links of posts should be made.Separate multiple IDs by space
-* Check [info.py](https://github.com/jkdevloper01/JK-FILTER-BOT/blob/master/info.py) for more optional variables
+* Check [info.py](https://github.com/safarideveloper/SAFARI-FILTER-BOT/blob/master/info.py) for more optional variables
 
 
 <details><summary>Deploy To Heroku</summary>
 <p>
 <br>
-<a href="https://heroku.com/deploy?template=https://github.com/jkdevloper01/jk-filter-bot">
+<a href="https://heroku.com/deploy?template=https://github.com/safarideveloper/SAFARI-FILTER-BOT">
   <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy To Heroku">
 </a>
 </p>
@@ -122,7 +131,7 @@
 <br>
 <br>
 
-[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/jkdevloper01/jk-filter-bot&branch=main)
+[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/safarideveloper/SAFARI-FILTER-BOT&branch=main)
 </details>
 
 <details><summary>Deploy To Render</summary>
@@ -149,7 +158,7 @@ Use these settings when adding a monitor:</b>
 <b>Click on the below button to deploy directly to render ↓</b>
 <br>
 <br>
-<a href="https://render.com/deploy?repo=https://github.com/jkdevloper01/jk-filter-bot">
+<a href="https://render.com/deploy?repo=https://github.com/safarideveloper/SAFARI-FILTER-BOT">
 <img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render">
 </a>
 </details>
@@ -157,7 +166,7 @@ Use these settings when adding a monitor:</b>
 <details><summary>Deploy To VPS</summary>
 <p>
 <pre>
-git clone https://github.com/Joelkb/DQ-The-File-Donor
+git clone https://github.com/safarideveloper/SAFARI-FILTER-BOT
 # Install Packages
 pip3 install -U -r requirements.txt
 Edit info.py with variables as given below then run bot
@@ -170,13 +179,12 @@ python3 bot.py
 
 ## Credits 
 * [![EvaMaria-Devs](https://img.shields.io/static/v1?label=EvaMaria&message=devs&color=critical)](https://telegram.dog/EvaMariaDevs)
-* [![Joel-TGX](https://img.shields.io/static/v1?label=˜”°•✩•°”˜ 𝙹𝙺 𝙳𝙴𝚅𝙻𝙾𝙿𝙴𝚁 ˜”°•✩•°”˜&message=Github&color=critical)](https://github.com/jkdevloper01)
-* [![Contact](https://img.shields.io/static/v1?label=Contact+Developer&message=On+Telegram&color=critical)](https://telegram.me/lusifilms)
+* [![Contact](https://img.shields.io/static/v1?label=Contact+Developer&message=On+Telegram&color=critical)](https://telegram.me/safari_bots)
 
 ## Note 🏷️
  - <b>Importing this repo instead of forking is strictly prohibited 🚫 Kindly fork and edit as your wish (Must Give Credits for devs) 🙃</b>
  - <b>If you find any bugs or errors, report it to the developer.</b>
-* [![Contact Developer](https://img.shields.io/static/v1?label=Contact+Developer&message=On+Telegram&color=critical)](https://telegram.me/lusifilms)
+* [![Contact Developer](https://img.shields.io/static/v1?label=Contact+Developer&message=On+Telegram&color=critical)](https://telegram.me/safari_bots)
 
 [Note To A So Called Dev](https://telegram.dog/subin_works/203): 
 
