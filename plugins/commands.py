@@ -457,8 +457,8 @@ async def start(client, message):
         for x in filesarr:
             await asyncio.sleep(5)
             await x.delete()
-            await k.edit_text("<b>Your All Files/Videos is successfully deleted!!!</b>")
-            return   
+        await k.edit_text("<b>Your All Files/Videos is successfully deleted!!!</b>")
+        return   
     files_ = await get_file_details(file_id)           
     if not files_:
         pre, file_id = ((base64.urlsafe_b64decode(data + "=" * (-len(data) % 4))).decode("ascii")).split("_", 1)
