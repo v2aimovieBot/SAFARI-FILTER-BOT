@@ -74,7 +74,6 @@ async def start():
     temp.U_NAME = me.username
     temp.B_NAME = me.first_name
     SafariBot.username = '@' + me.username
-    SafariBot.loop.create_task(check_expired_premium(SafariBot))
     app = web.AppRunner(await web_server())
     await app.setup()
     await web.TCPSite(app, "0.0.0.0", PORT).start()
