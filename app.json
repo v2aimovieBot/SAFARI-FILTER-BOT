@@ -15,8 +15,8 @@
       "index",
       "inline"
     ],
-    "website": "https://github.com/Joelkb/DQ-the-file-donor",
-    "repository": "https://github.com/Joelkb/DQ-the-file-donor",
+    "website": "https://github.com/Safarideveloper/SAFARI-FILTER-BOT",
+    "repository": "https://github.com/Safarideveloper/SAFARI-FILTER-BOT",
     "env": {
         "BOT_TOKEN": {
             "description": "Your bot token.",
@@ -46,6 +46,10 @@
             "description": "Bot Logs,Give a channel id with -100xxxxxxx",
             "required": true
         },
+        "BIN_CHANNEL": {
+            "description": "fill Log Channel Id, else other channel id.",
+            "required": true
+        },
         "AUTH_USERS": {
             "description": "Username or ID of users to give access of inline search. Separate multiple users by space.\nLeave it empty if you don't want to restrict bot usage.",
             "required": false
@@ -66,6 +70,11 @@
             "description": "Name of the collections. Defaults to Telegram_files. If you are using the same database, then use different collection name for each bot",
             "value": "Telegram_files",
             "required": false
+        }
+        "FQDN": {
+            "description": "Use this bot server link without [ https:// ] or [ / ]",
+            "value": "fileshar3e-6edb6bc51d53.herokuapp.com",
+            "required": true
         }
     },
     "addons": [],
