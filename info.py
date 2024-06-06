@@ -49,6 +49,9 @@ DATABASE_URI = environ.get('DATABASE_URI', "")
 DATABASE_NAME = environ.get('DATABASE_NAME', "Rajappan")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
+# Pm files delete 
+FILES_DELETE = is_enabled((environ.get('FILES_DELETE', 'True')), False)
+
 # fill premium users id
 PREMIUM_USER = [int(user) if id_pattern.search(user) else user for user in environ.get('PREMIUM_USER', '7015329594').split()]
 
