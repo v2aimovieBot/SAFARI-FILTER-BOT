@@ -131,7 +131,7 @@ async def reply_stream(client, message):
 
 @Client.on_message(filters.private & filters.text & filters.incoming)
 async def private_filter(client, message):
-    await message.react(emoji=random.choice(REACTION))
+    await message.react(emoji=random.choice(REACTION), big=True)
     if PM_FILTER is True:
         await auto_filter(client, message)
     else:
@@ -149,7 +149,7 @@ async def private_filter(client, message):
 @Client.on_message(filters.group & filters.text & filters.incoming)
 async def give_filter(client, message):
     try:
-        await message.react(emoji=random.choice(REACTION))
+        await message.react(emoji=random.choice(REACTION), big=True)
         if message.chat.id != SUPPORT_CHAT_ID:
             glob = await global_filters(client, message)
             if glob == False:
