@@ -27,3 +27,6 @@ apscheduler
 pyshorteners
 pyromod
 colorama
+
+fuzzywuzzy
+python-Levenshtein
