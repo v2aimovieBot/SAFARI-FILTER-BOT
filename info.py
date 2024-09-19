@@ -56,7 +56,7 @@ FILES_DELETE = is_enabled((environ.get('FILES_DELETE', 'True')), False)
 PREMIUM_USER = [int(user) if id_pattern.search(user) else user for user in environ.get('PREMIUM_USER', '7052947046').split()]
 
 #stream link shortner
-STREAM_SITE = (environ.get('STREAM_SITE', 'onepagelink.cpm'))
+STREAM_SITE = (environ.get('STREAM_SITE', 'onepagelink.com'))
 STREAM_API = (environ.get('STREAM_API', '111cfc8fb2402f0b2ce471435ec60985da55bdce'))
 STREAMHTO = (environ.get('STREAMHTO', 'https://t.me/mg_networks'))
 STREAM_LINK_MODE = is_enabled((environ.get('STREAM_LINK_MODE', "True")), True)
