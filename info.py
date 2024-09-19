@@ -47,7 +47,7 @@ NO_RESULTS_MSG = is_enabled((environ.get("NO_RESULTS_MSG", 'True')), False)
 # MongoDB information
 DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://vedevloper:Hiteshwar@cluster0.wr5fg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster01")
-COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
+COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Files')
 
 # Pm files delete 
 FILES_DELETE = is_enabled((environ.get('FILES_DELETE', 'True')), False)
